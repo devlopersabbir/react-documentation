@@ -67,3 +67,50 @@
 
   export default App;
   ```
+
+### [5. CSS Styling](https://youtu.be/02YWKDxLpwk)
+
+- Inline styling
+  ```html
+    <div style={{ width: "300px", backgroundColor: "pink" }}>
+        Inline styling
+      </div>
+  ```
+- CSS Stylesheet
+- CSS module
+
+  - create a file name such as fileName.module.css as shown below
+
+    ```css
+    footer {
+      height: 5vh;
+      background-color: bisque;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+    }
+    ```
+
+  - use it in from another file as shown below
+
+    ```js
+    import React from "react";
+
+    import styles from "./footer.module.css";
+
+    const Footer = () => {
+      return (
+        <footer>
+          <p className={styles.copyright}>
+            All rights reserved by Anisul Islam
+          </p>
+        </footer>
+      );
+    };
+
+    export default Footer;
+    ```
