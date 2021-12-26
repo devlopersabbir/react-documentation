@@ -157,13 +157,10 @@
   import Todo from "./components/Todo";
 
   const todoTitle = "make react series";
-  const todoBody =
-    "I have to create a lot of videos for react series starting from a scratch";
-
   const App = () => {
     return (
       <div>
-        <Todo todoTitle="title1" todoBody="this is the description" />
+        <Todo todoTitle={todoTitle} todoBody="this is the description" />
       </div>
     );
   };
