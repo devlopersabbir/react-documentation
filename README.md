@@ -332,3 +332,132 @@
     }
   }
   ```
+
+### [10. Conditional rendering](https://youtu.be/roSfZjXp5us)
+
+- rendering components based on if-else, element variable, ternary, short circuit
+
+- example
+
+  ```js
+  // App.js
+  import React from "react";
+
+  import Todos from "./components/Todos";
+
+  const todos = [
+    {
+      id: 1,
+      title: "make react series",
+      body: "I have to create a lot of videos for react series starting from a scratch",
+    },
+    {
+      id: 2,
+      title: "make rest api series",
+      body: "I have to create a lot of videos for rest api before the end of February 2022",
+    },
+  ];
+
+  const App = () => {
+    return (
+      <div>
+        <h2>TO-DO App</h2>
+        <Todos todos={todos} />
+      </div>
+    );
+  };
+
+  export default App;
+  ```
+
+  ```js
+  // Todo.js
+  import React from "react";
+
+  const Todo = (props) => {
+    const { todos } = props;
+
+    const todosElements = todos.map((todo) => (
+      <div key={todo.id}>
+        <h3>{todo.title}</h3>
+        <p>{todo.body}</p>
+      </div>
+    ));
+
+    return <div>{todosElements}</div>;
+  };
+
+  export default Todo;
+  ```
+
+  ```js
+  // Todos.js
+  import React from "react";
+  import Todo from "./Todo";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    // if-else rendering
+    if (todos.length > 0) {
+      return <div>{<Todo todos={todos} />}</div>;
+    } else {
+      return <p>no todo</p>;
+    }
+  };
+
+  export default Todos;
+  ```
+
+  ```js
+  // Todos.js
+  import React from "react";
+  import Todo from "./Todo";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    // element varibale rendering
+    let element;
+    if (todos.length > 0) {
+      element = <div>{<Todo todos={todos} />}</div>;
+    } else {
+      element = <p>no todo</p>;
+    }
+
+    return element;
+  };
+
+  export default Todos;
+  ```
+
+  ```js
+  // Todos.js
+  import React from "react";
+  import Todo from "./Todo";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    return (
+      // ternary rendering
+      <div>{todos.length > 0 ? <Todo todos={todos} /> : <p>no todo</p>}</div>
+    );
+  };
+
+  export default Todos;
+  ```
+
+  ```js
+  import React from "react";
+  import Todo from "./Todo";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    // short-circuit rendering
+    return <div>{todos.length > 0 && <Todo todos={todos} />}</div>;
+  };
+
+  export default Todos;
+  ```
