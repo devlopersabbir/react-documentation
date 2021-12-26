@@ -148,6 +148,7 @@
 
 ### [7. Props and destructuring](https://youtu.be/GQx58yfYqxo)
 
+- we can pass information to another component using props. Props is like a varibale or object.
 - example
 
   ```js
@@ -215,10 +216,12 @@
 
   const todos = [
     {
+      id: 1,
       title: "make react series",
       body: "I have to create a lot of videos for react series starting from a scratch",
     },
     {
+      id: 2,
       title: "make rest api series",
       body: "I have to create a lot of videos for rest api before the end of February 2022",
     },
@@ -245,7 +248,7 @@
     return (
       <div>
         {todos.map((todo) => (
-          <div>
+          <div key={todo.id}>
             <h3>{todo.title}</h3>
             <p>{todo.body}</p>
           </div>
@@ -265,7 +268,7 @@
     const { todos } = props;
 
     const todoElements = todos.map((todo) => (
-      <div>
+      <div key={todo.id}>
         <h3>{todo.title}</h3>
         <p>{todo.body}</p>
       </div>
@@ -275,4 +278,57 @@
   };
 
   export default Todo;
+  ```
+
+### [9. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
+
+- state is a js object for storing current situation of a component
+
+- example
+
+  ```js
+  // App.js
+  import React from "react";
+
+  import Counter from "./components/Counter";
+
+  const App = () => {
+    return (
+      <div>
+        <Counter />
+      </div>
+    );
+  };
+
+  export default App;
+  ```
+
+  ```js
+  // Counter.js
+  import React, { Component } from "react";
+
+  export default class Counter extends Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        count: 0,
+      };
+    }
+
+    handleIncrement = () => {
+      this.setState({
+        count: this.state.count + 1,
+      });
+    };
+
+    render() {
+      return (
+        <div>
+          <h2>Counter: {this.state.count}</h2>
+          <button onClick={this.handleIncrement}>+</button>
+        </div>
+      );
+    }
+  }
   ```
