@@ -461,3 +461,47 @@
 
   export default Todos;
   ```
+
+### [11. useState Hooks](https://youtu.be/skUOiqcVurY)
+
+- useState() hook helps us to track state in a functional component.
+
+- example
+
+  ```js
+  // App.js
+  import React from "react";
+
+  import Counter from "./components/Counter";
+
+  const App = () => {
+    return (
+      <div>
+        <Counter />
+      </div>
+    );
+  };
+
+  export default App;
+  ```
+
+  ```js
+  // Counter.js
+  import React, { useState } from "react";
+
+  function Counter() {
+    const [count, setCount] = useState(0);
+    const handleIncrement = () => {
+      setCount(count + 1);
+    };
+
+    return (
+      <div>
+        <h2>Counter: {count}</h2>
+        <button onClick={handleIncrement}>+</button>
+      </div>
+    );
+  }
+
+  export default Counter;
+  ```
