@@ -114,3 +114,34 @@
 
     export default Footer;
     ```
+
+### [6. Component](https://youtu.be/qgLZSNppJOU)
+
+- create a folder named as components inside src folder
+- create new component and place inside components folder
+- there are 2 types of components: functional component and class component
+- example of functional component is given below
+
+  ```js
+  import React from "react";
+
+  const Todo = () => {
+    return <div>Todo</div>;
+  };
+
+  export default Todo;
+  ```
+
+- example of class component is given below
+
+  ```js
+  import React, { Component } from "react";
+
+  class Todo extends Component {
+    render() {
+      return <div>Todo</div>;
+    }
+  }
+
+  export default Todo;
+  ```
