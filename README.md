@@ -166,7 +166,9 @@
   };
 
   export default App;
+  ```
 
+  ```js
   // create Todo.js inside components folder
   // without destructuring
   import React from "react";
@@ -181,7 +183,9 @@
   };
 
   export default Todo;
+  ```
 
+  ```js
   // with destructuring
   import React from "react";
 
@@ -203,68 +207,72 @@
 - example
 
   ```js
-    // App.js
-    import React from "react";
+  // App.js
+  import React from "react";
 
-    import "./App.css";
-    import Todo from "./components/Todo";
+  import "./App.css";
+  import Todo from "./components/Todo";
 
-    const todos = [
-      {
-        title: "make react series",
-        body: "I have to create a lot of videos for react series starting from a scratch",
-      },
-      {
-        title: "make rest api series",
-        body: "I have to create a lot of videos for rest api before the end of February 2022",
-      },
-    ];
+  const todos = [
+    {
+      title: "make react series",
+      body: "I have to create a lot of videos for react series starting from a scratch",
+    },
+    {
+      title: "make rest api series",
+      body: "I have to create a lot of videos for rest api before the end of February 2022",
+    },
+  ];
 
-    const App = () => {
-      return (
-        <div>
-            <h2>TO-DO App</h2>
-            <Todo todos={todos} />
-        </div>
-      );
-    };
+  const App = () => {
+    return (
+      <div>
+        <h2>TO-DO App</h2>
+        <Todo todos={todos} />
+      </div>
+    );
+  };
 
-    export default App;
+  export default App;
+  ```
 
-    // Todo.js
-    import React from "react";
+  ```js
+  // Todo.js
+  import React from "react";
 
-    const Todo = (props) => {
-      const { todos } = props;
-      return (
-        <div>
-          {todos.map((todo) => (
-            <div>
-              <h3>{todo.title}</h3>
-              <p>{todo.body}</p>
-            </div>
-          ))}
-        </div>
-      );
-    };
+  const Todo = (props) => {
+    const { todos } = props;
+    return (
+      <div>
+        {todos.map((todo) => (
+          <div>
+            <h3>{todo.title}</h3>
+            <p>{todo.body}</p>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
-    export default Todo;
+  export default Todo;
+  ```
 
-    // we can make the JSX of Todo.js more cleaner as shown below
-    import React from "react";
+  ```js
+  // we can make the JSX of Todo.js more cleaner as shown below
+  import React from "react";
 
-    const Todo = (props) => {
-      const { todos } = props;
+  const Todo = (props) => {
+    const { todos } = props;
 
-      const todoElements = todos.map((todo) => (
-        <div>
-          <h3>{todo.title}</h3>
-          <p>{todo.body}</p>
-        </div>
-      ));
+    const todoElements = todos.map((todo) => (
+      <div>
+        <h3>{todo.title}</h3>
+        <p>{todo.body}</p>
+      </div>
+    ));
 
-      return <div>{todoElements}</div>;
-    };
+    return <div>{todoElements}</div>;
+  };
 
-    export default Todo;
+  export default Todo;
   ```
