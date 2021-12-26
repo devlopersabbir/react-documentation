@@ -145,3 +145,58 @@
 
   export default Todo;
   ```
+
+### [7. Props and destructuring](https://youtu.be/GQx58yfYqxo)
+
+- example
+
+  ```js
+  import React from "react";
+
+  import "./App.css";
+  import Todo from "./components/Todo";
+
+  const todoTitle = "make react series";
+  const todoBody =
+    "I have to create a lot of videos for react series starting from a scratch";
+
+  const App = () => {
+    return (
+      <div>
+        <Todo todoTitle="title1" todoBody="this is the description" />
+      </div>
+    );
+  };
+
+  export default App;
+
+  // create Todo.js inside components folder
+  // without destructuring
+  import React from "react";
+
+  const Todo = (props) => {
+    return (
+      <div>
+        <h3>{props.todoTitle}</h3>
+        <p>{props.todoBody}</p>
+      </div>
+    );
+  };
+
+  export default Todo;
+
+  // with destructuring
+  import React from "react";
+
+  const Todo = (props) => {
+    const { todoTitle, todoBody } = props;
+    return (
+      <div>
+        <h3>{todoTitle}</h3>
+        <p>{todoBody}</p>
+      </div>
+    );
+  };
+
+  export default Todo;
+  ```
