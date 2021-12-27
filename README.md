@@ -505,3 +505,140 @@
 
   export default Counter;
   ```
+
+### [11. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
+
+- example
+
+  ```css
+  /* new-todo.module.css */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+    padding: 1rem;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  .form-field {
+    margin: 1rem 0;
+  }
+  input,
+  select,
+  textarea {
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    background-color: antiquewhite;
+  }
+
+  textarea {
+    resize: none;
+    height: 10rem;
+  }
+
+  button {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    background-color: rgb(245, 169, 5);
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+  ```
+
+  ```js
+  // NewTodo.js
+  import React, { useState } from "react";
+
+  import styles from "./new-todo.module.css";
+
+  const NewTodo = () => {
+    const [todo, setTodo] = useState({
+      title: "",
+      level: "high",
+      body: "",
+    });
+
+    const handleInputChange = (event) => {
+      setTodo({ ...todo, [event.target.name]: event.target.value });
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log(todo);
+      setTodo({
+        title: "",
+        level: "high",
+        body: "",
+      });
+    };
+
+    return (
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <h2>New Todo</h2>
+          <form onSubmit={handleSubmit}>
+            <div className={styles["form-field"]}>
+              <label htmlFor="title">Title: </label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                onChange={handleInputChange}
+                value={todo.title}
+                required
+              />
+            </div>
+            <div className={styles["form-field"]}>
+              <label htmlFor="level">Level of Importance: </label>
+              <select
+                name="level"
+                id="level"
+                onChange={handleInputChange}
+                value={todo.level}
+                required
+              >
+                <option value="high">high</option>
+                <option value="medium">medium</option>
+                <option value="low">low</option>
+              </select>
+            </div>
+            <div className={styles["form-field"]}>
+              <label htmlFor="body">Body: </label>
+              <textarea
+                id="body"
+                name="body"
+                onChange={handleInputChange}
+                value={todo.body}
+                required
+              >
+                {" "}
+              </textarea>
+            </div>
+            <div className={styles["form-field"]}>
+              <button>create todo</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
+  export default NewTodo;
+  ```
