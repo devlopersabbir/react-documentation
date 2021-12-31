@@ -642,3 +642,73 @@
 
   export default NewTodo;
   ```
+
+### [12. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
+
+- Another practical example: https://youtu.be/h7yq5lfDZc8
+- Example
+
+  ```js
+  // App.js
+  ```
+
+### [13. useEffect Hook]()
+
+- Example 1
+
+  ```js
+  import React, { useEffect, useState } from "react";
+
+  // Rule: Don’t call Hooks inside loops, conditions, or nested functions
+
+  // The useEffect Hook allows to perform side effects (fetching data, timers, directly updating the DOM) in components.
+
+  // useEffct = componentDidMount + componentDidUpdate + componentWillUnmount
+
+  const UseEffectHook = () => {
+    const [count, setCount] = useState(0);
+
+    // useEffect(() => {
+    //   //Runs on every render
+    // });
+
+    // useEffect(() => {
+    //   //Runs only on the first render
+    // }, []);
+
+    // useEffect(() => {
+    //   //Runs on the first render
+    //   //And any time any dependency value changes
+    // }, [prop, state]);
+
+    //Runs on every render
+    // useEffect(() => {
+    //   console.log("useEffect: " + count);
+    // });
+
+    //Runs only on the first render
+    // useEffect(() => {
+    //   console.log(count);
+    // }, []);
+
+    //Runs on the first render and also when the dependecy value changes
+    useEffect(() => {
+      console.log(count);
+    }, [count]);
+
+    return (
+      <div>
+        <h1>Count: {count}</h1>
+        <button
+          onClick={() => {
+            setCount((count) => count + 1);
+          }}
+        >
+          +
+        </button>
+      </div>
+    );
+  };
+
+  export default UseEffectHook;
+  ```
