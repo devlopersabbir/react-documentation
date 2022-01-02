@@ -712,3 +712,41 @@
 
   export default UseEffectHook;
   ```
+
+  ```js
+  // Another example
+  import React, { useState, useEffect } from "react";
+
+  const UseEffectExample = () => {
+    const [count, setCount] = useState(0);
+    const [loading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+      console.log("useEffect");
+      console.log("isLoading: " + loading);
+    }, [count]);
+
+    return (
+      <div>
+        {console.log("render")}
+        <h2>Count: {count}</h2>
+        <button
+          onClick={() => {
+            setCount((count) => count + 1);
+          }}
+        >
+          +
+        </button>
+        <button
+          onClick={() => {
+            setIsLoading(!loading);
+          }}
+        >
+          change loading
+        </button>
+      </div>
+    );
+  };
+
+  export default UseEffectExample;
+  ```
