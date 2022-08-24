@@ -17,6 +17,8 @@
 - Major brands like facebook, instragram, youtube, airbnb use react.js
 
 ### [2. Environment setup](https://youtu.be/4wjI8fh77GM)
+- VSCode
+- node.js
 
 ### [3. First react app](https://youtu.be/2Ec3h0z51aI)
 
@@ -34,88 +36,36 @@
 ### [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
 
 - JSX stands for JavsScript XML which allows us to use write html inside javascript and vice versa
-- An example is here
+- react module has babbel inside of it that helps us to run jsx: html inside javascript
+- Create App.js file and put the following code inside of App.js 
+- 
 
   ```js
-  import React from "react";
+  import React from 'react';
 
-  const todoTitle1 = "make react series";
-  const todoBody1 =
-    "I have to create a lot of videos for react series starting from a scratch";
+    const todoTitle1 = 'make react series';
+    const todoBody1 = 'I have to create a lot of videos for react series starting from a scratch';
 
-  const todoTitle2 = "make REST API series";
-  const todoBody2 =
-    "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+    const todoTitle2 = 'make REST API series';
+    const todoBody2 = 'I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series';
 
-  const App = () => {
-    return (
-      <div>
-        <h2>TO-DO App</h2>
-
-        <div>
-          <h3>{todoTitle1}</h3>
-          <p>{todoBody1}</p>
-        </div>
-
-        <div>
-          <h3>{todoTitle2}</h3>
-          <p>{todoBody2}</p>
-        </div>
-      </div>
-    );
-  };
-
-  export default App;
-  ```
-
-### [5. CSS Styling](https://youtu.be/02YWKDxLpwk)
-
-- Inline styling
-  ```html
-    <div style={{ width: "300px", backgroundColor: "pink" }}>
-        Inline styling
-      </div>
-  ```
-- CSS Stylesheet
-- CSS module
-
-  - create a file name such as fileName.module.css as shown below
-
-    ```css
-    footer {
-      height: 5vh;
-      background-color: bisque;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .copyright {
-      font-size: 0.9rem;
-    }
-    ```
-
-  - use it in from another file as shown below
-
-    ```js
-    import React from "react";
-
-    import styles from "./footer.module.css";
-
-    const Footer = () => {
+    function App() {
       return (
-        <footer>
-          <p className={styles.copyright}>
-            All rights reserved by Anisul Islam
-          </p>
-        </footer>
+        <div>
+          <div>
+            <h2>todo title</h2>
+            <p>todo desc</p>
+          </div>
+         </div>
+
       );
-    };
+    }
 
-    export default Footer;
-    ```
+    export default App;
 
-### [6. Component](https://youtu.be/qgLZSNppJOU)
+  ```
+
+### [5. Component](https://youtu.be/qgLZSNppJOU)
 
 - create a folder named as components inside src folder
 - create new component and place inside components folder
@@ -145,8 +95,82 @@
 
   export default Todo;
   ```
+  
+- todo project example. create a file "Todos" inside component folder and use this file from App.js
+    ```js
+        // Header.jsx
+        import React from 'react';
 
-### [7. Props and destructuring](https://youtu.be/GQx58yfYqxo)
+        function Header() {
+          return (
+            <header>Todo App</header>
+          );
+        }
+
+        export default Header;
+        
+        // Footer.jsx
+        import React from 'react';
+
+        function Footer() {
+          return (
+            <footer>
+              <p>Copyright by &copy;Anisul Islam</p>
+              <p>Developed with &hearts; Anisul Islam</p>
+            </footer>
+          );
+        }
+
+        export default Footer;
+
+
+        // Todos.jsx
+        import React from 'react';
+        import Todo from './Todo';
+
+        function Todos() {
+          return (
+            <div className="todos">
+              <Todo />
+            </div>
+          );
+        }
+
+        export default Todos;
+        
+        // Todo.js
+        import React from 'react';
+
+        function Todo() {
+          return (
+            <div>
+              <h2>todo title </h2>
+              <p>todo desc </p>
+            </div>
+          );
+        }
+
+        export default Todo;
+
+        // App.jsx
+        import React from 'react';
+        import Todos from './components/Todos';
+
+        function App() {
+          return (
+            <div>
+              <Header />
+              <Todos />
+              <Footer />
+            </div>
+          );
+        }
+
+        export default App;
+
+    ```
+  
+### [6. Props and destructuring](https://youtu.be/GQx58yfYqxo)
 
 - we can pass information to another component using props. Props is like a varibale or object.
 - example
@@ -203,7 +227,7 @@
   export default Todo;
   ```
 
-### [8. Mapping components](https://youtu.be/OwwmIzH7FzI)
+### [7. Mapping components](https://youtu.be/OwwmIzH7FzI)
 
 - example
 
@@ -279,6 +303,53 @@
 
   export default Todo;
   ```
+  
+### [8. CSS Styling](https://youtu.be/02YWKDxLpwk)
+
+- Inline styling
+  ```html
+    <div style={{ width: "300px", backgroundColor: "pink" }}>
+        Inline styling
+      </div>
+  ```
+- CSS Stylesheet
+- CSS module
+
+  - create a file name such as fileName.module.css as shown below
+
+    ```css
+    footer {
+      height: 5vh;
+      background-color: bisque;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+    }
+    ```
+
+  - use it in from another file as shown below
+
+    ```js
+    import React from "react";
+
+    import styles from "./footer.module.css";
+
+    const Footer = () => {
+      return (
+        <footer>
+          <p className={styles.copyright}>
+            All rights reserved by Anisul Islam
+          </p>
+        </footer>
+      );
+    };
+
+    export default Footer;
+    ```
 
 ### [9. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
 
