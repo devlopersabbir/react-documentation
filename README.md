@@ -928,12 +928,16 @@
     npm i --save @fortawesome/free-regular-svg-icons
     npm i --save @fortawesome/free-brands-svg-icons   
     
+    // add the react component
+    npm i --save @fortawesome/react-fontawesome@latest
+
+    
     // usage
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
     import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
     import { faYoutube } from '@fortawesome/free-brands-svg-icons';
     
-    <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
+    <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
     
     // use className for styling icons
 
