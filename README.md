@@ -914,15 +914,31 @@
 
   export default useFetch;
   ```
+  
+### [16. add font awesome icons]()
 
-### [16. useRef hook]()
-
-- example
+- steps
 
   ```js
+     // Add SVG Core
+    npm i --save @fortawesome/fontawesome-svg-core
+    
+    // add Free icons styles
+    npm i --save @fortawesome/free-solid-svg-icons
+    npm i --save @fortawesome/free-regular-svg-icons
+    npm i --save @fortawesome/free-brands-svg-icons   
+    
+    // usage
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+    import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+    
+    <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
+    
+    // use className for styling icons
 
-  ```
-
+   ```
+   
 ### [17. useRef hook]()
 
 - example
@@ -931,7 +947,7 @@
 
   ```
 
-### [18. react routing]()
+### [18. useRef hook]()
 
 - example
 
@@ -939,7 +955,15 @@
 
   ```
 
-### [19. react todo projects]()
+### [19. react routing]()
+
+- example
+
+  ```js
+
+  ```
+
+### [20. react todo projects]()
 
 - example
 
