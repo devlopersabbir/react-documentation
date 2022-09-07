@@ -577,7 +577,7 @@
   export default Counter;
   ```
 
-### [11. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
+### [12. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
 
 - example
 
@@ -714,7 +714,7 @@
   export default NewTodo;
   ```
 
-### [12. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
+### [13. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
 
 - Another practical example: https://youtu.be/h7yq5lfDZc8
 - Example
@@ -723,7 +723,7 @@
   // App.js
   ```
 
-### [13. useEffect Hook]()
+### [14. useEffect Hook]()
 
 - Example 1
 
@@ -822,7 +822,7 @@
   export default UseEffectExample;
   ```
 
-### [14. fatch data using useEffect Hook]()
+### [15. fatch data using useEffect Hook]()
 
 - example
 
@@ -876,7 +876,7 @@
   export default UseEffectHook;
   ```
 
-### [15. how to create custom hook]()
+### [16. how to create custom hook]()
 
 - example
 
@@ -915,7 +915,7 @@
   export default useFetch;
   ```
   
-### [16. add font awesome icons]()
+### [17. add font awesome icons]()
 
 - steps
 
@@ -943,14 +943,6 @@
 
    ```
    
-### [17. useRef hook]()
-
-- example
-
-  ```js
-
-  ```
-
 ### [18. useRef hook]()
 
 - example
@@ -966,3 +958,104 @@
 ### [20. react todo projects]()
 
 - [react todo project](https://github.com/anisul-Islam/react-todo-project)
+
+
+### [21. react memo]()
+- It helps to avoid unnecessary components rendering
+  ```js
+       // App.js
+       import React, { useState } from 'react';
+        import Message from './components/Message';
+
+        const App = () => {
+          const [count, setCount] = useState(0);
+          console.log('app rendering');
+          return (
+            <div>
+              <h1>Welcome to Memo</h1>
+              <h2>Count : {count}</h2>
+              <button
+                onClick={() => {
+                  setCount((count) => count + 1);
+                }}>
+                Increment
+              </button>
+              <Message numberOfMessages={0} />
+            </div>
+          );
+        };
+
+        export default App;
+
+    // Message.js
+    import React, { memo } from 'react';
+    import PropTypes from 'prop-types';
+    const Message = (props) => {
+      console.log('message rendering');
+      return <div>Message {props.numberOfMessages}</div>;
+    };
+
+    Message.propTypes = {
+      numberOfMessages: PropTypes.number
+    };
+
+    export default memo(Message);
+  ```
+### [22. useCallback Hook]()
+- It helps to avoid unnecessary components rendering for defining callback methods
+- only component will be rendered when some states or props change 
+  ```js
+       // App.js
+       import React, { useState, useCallback, useMemo } from 'react';
+        import Message from './components/Message';
+
+        const App = () => {
+          const [count, setCount] = useState(0);
+          console.log('app component rendering');
+
+          const handleDataFromMessage = useCallback((data) => {
+            console.log(data);
+          }, []);
+
+          const numbers = useMemo(() => {
+            let number = 0;
+            for (let index = 0; index < 5000000000; index++) {
+              number++;
+            }
+            return number;
+          }, []);
+
+          return (
+            <div>
+              <h2>{numbers}</h2>
+              <h2>Count : {count}</h2>
+              <button
+                onClick={() => {
+                  setCount((count) => count + 1);
+                }}>
+                Increment
+              </button>
+              <Message onHandleDataFromMessage={handleDataFromMessage} />
+            </div>
+          );
+        };
+
+        export default App;
+
+
+    // Message.js
+    import React from 'react';
+    import PropTypes from 'prop-types';
+    const Message = ({ onHandleDataFromMessage }) => {
+      console.log('message component rendering');
+      onHandleDataFromMessage('hello I am from message component');
+      return <div>Message</div>;
+    };
+
+    Message.propTypes = {
+      onHandleDataFromMessage: PropTypes.func
+    };
+
+    export default React.memo(Message);
+
+  ```
