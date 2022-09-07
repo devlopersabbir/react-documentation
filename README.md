@@ -1017,6 +1017,51 @@
             console.log(data);
           }, []);
 
+          return (
+            <div>
+              <h2>{numbers}</h2>
+              <h2>Count : {count}</h2>
+              <button
+                onClick={() => {
+                  setCount((count) => count + 1);
+                }}>
+                Increment
+              </button>
+              <Message onHandleDataFromMessage={handleDataFromMessage} />
+            </div>
+          );
+        };
+
+        export default App;
+
+
+    // Message.js
+    import React from 'react';
+    import PropTypes from 'prop-types';
+    const Message = ({ onHandleDataFromMessage }) => {
+      console.log('message component rendering');
+      onHandleDataFromMessage('hello I am from message component');
+      return <div>Message</div>;
+    };
+
+    Message.propTypes = {
+      onHandleDataFromMessage: PropTypes.func
+    };
+
+    export default React.memo(Message);
+
+  ```
+  ### [23. useMemo Hook]()
+- It helps to avoid taking unnecessary time for same kind of complex calculation for each rendering
+  ```js
+       // App.js
+       import React, { useState, useCallback, useMemo } from 'react';
+        import Message from './components/Message';
+
+        const App = () => {
+          const [count, setCount] = useState(0);
+          console.log('app component rendering');
+
           const numbers = useMemo(() => {
             let number = 0;
             for (let index = 0; index < 5000000000; index++) {
@@ -1035,7 +1080,6 @@
                 }}>
                 Increment
               </button>
-              <Message onHandleDataFromMessage={handleDataFromMessage} />
             </div>
           );
         };
