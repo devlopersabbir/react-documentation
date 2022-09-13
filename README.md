@@ -26,48 +26,100 @@
 
 3.1 Method 1: add React to a website with CDN
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
+- without JSX
 
-    <style>
-      .title {
-        background-color: brown;
-        color: white;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <script
+        crossorigin
+        src="https://unpkg.com/react@18/umd/react.development.js"
+      ></script>
+      <script
+        crossorigin
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      ></script>
 
-    <script>
-      const headingElement = React.createElement(
-        "h1",
-        { id: "heading", className: "title" },
-        "Welcome to React"
-      );
-      const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(headingElement);
-    </script>
-  </body>
-</html>
-```
+      <style>
+        .title {
+          background-color: brown;
+          color: white;
+          text-align: center;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="root"></div>
 
-3.2 Method 2: create and run react app with npx
+      <script>
+        const headingElement = React.createElement(
+          "h1",
+          { id: "heading", className: "title" },
+          "Welcome to React"
+        );
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(headingElement);
+      </script>
+    </body>
+  </html>
+  ```
+
+- With JSX
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+
+      <!-- adding React  -->
+      <script
+        crossorigin
+        src="https://unpkg.com/react@18/umd/react.development.js"
+      ></script>
+
+      <!-- adding ReactDOM  -->
+      <script
+        crossorigin
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      ></script>
+
+      <!-- add the babel and allow jsx  -->
+      <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+      <style>
+        .title {
+          background-color: brown;
+          color: white;
+          text-align: center;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="root"></div>
+
+      <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(
+          <h1 id="heading" className="title">
+            {" "}
+            Welcome to React{" "}
+          </h1>
+        );
+      </script>
+    </body>
+  </html>
+  ```
+
+  3.2 Method 2: create and run react app with npx
 
 ```js
 // create react app command
@@ -78,7 +130,7 @@ cd appName
 npm start
 ```
 
-3.2 understand File structure
+3.3 understand File structure
 
 ## [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
 
