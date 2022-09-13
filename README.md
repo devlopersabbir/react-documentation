@@ -110,8 +110,7 @@
         const root = ReactDOM.createRoot(document.getElementById("root"));
         root.render(
           <h1 id="heading" className="title">
-            {" "}
-            Welcome to React{" "}
+            Welcome to React
           </h1>
         );
       </script>
