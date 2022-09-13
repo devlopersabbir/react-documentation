@@ -1,71 +1,117 @@
 # React Documentation
 
 - prerequisities: HTML, CSS, Javascript
+- React.js official Site: https://reactjs.org/
 
-### [1. Introduction to React](https://youtu.be/fRXL0X2WSK4)
+## [1. Introduction to React](https://youtu.be/fRXL0X2WSK4)
 
-#### 1.1 What is React?
+### 1.1 What is React?
 
 - React is a flexible, efficent JavaScript Library.
 - It is developed by Facebook in 2013 for building user interface.
 
-#### 1.1 Why React?
+### 1.1 Why React?
 
 - It helps us to create reusable components (small and isloated pieces of code using html, css, js)
 - Load fast
 - Allows us to use external plugin
 - Major brands like facebook, instragram, youtube, airbnb use react.js
 
-### [2. Environment setup](https://youtu.be/4wjI8fh77GM)
+## [2. Environment setup](https://youtu.be/4wjI8fh77GM)
+
 - VSCode
 - node.js
 
-### [3. First react app](https://youtu.be/2Ec3h0z51aI)
+## [3. First react app](https://youtu.be/2Ec3h0z51aI)
 
-3.1 create and run react app
+3.1 Method 1: add React to a website with CDN
 
-    // create react app command
-    npx create-react-app appName
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
 
-    // run react app command
-    cd appName
-    npm start
+    <style>
+      .title {
+        background-color: brown;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      const headingElement = React.createElement(
+        "h1",
+        { id: "heading", className: "title" },
+        "Welcome to React"
+      );
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(headingElement);
+    </script>
+  </body>
+</html>
+```
+
+3.2 Method 2: create and run react app with npx
+
+```js
+// create react app command
+npx create-react-app appName
+
+// run react app command
+cd appName
+npm start
+```
 
 3.2 understand File structure
 
-### [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
+## [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
 
 - JSX stands for JavsScript XML which allows us to use write html inside javascript and vice versa
 - react module has babbel inside of it that helps us to run jsx: html inside javascript
-- Create App.js file and put the following code inside of App.js 
-- 
+- Create App.js file and put the following code inside of App.js
 
-  ```js
-  import React from 'react';
+  ```javascript
+  import React from "react";
 
-    const todoTitle1 = 'make react series';
-    const todoBody1 = 'I have to create a lot of videos for react series starting from a scratch';
+  const todoTitle1 = "make react series";
+  const todoBody1 =
+    "I have to create a lot of videos for react series starting from a scratch";
 
-    const todoTitle2 = 'make REST API series';
-    const todoBody2 = 'I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series';
+  const todoTitle2 = "make REST API series";
+  const todoBody2 =
+    "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
 
-    function App() {
-      return (
+  function App() {
+    return (
+      <div>
         <div>
-          <div>
-            <h2>todo title</h2>
-            <p>todo desc</p>
-          </div>
-         </div>
+          <h2>todo title</h2>
+          <p>todo desc</p>
+        </div>
+      </div>
+    );
+  }
 
-      );
-    }
-
-    export default App;
-
+  export default App;
   ```
 
-### [5. Component](https://youtu.be/qgLZSNppJOU)
+## [5. Component](https://youtu.be/qgLZSNppJOU)
 
 - create a folder named as components inside src folder
 - create new component and place inside components folder
@@ -95,82 +141,82 @@
 
   export default Todo;
   ```
-  
+
 - todo project example. create a file "Todos" inside component folder and use this file from App.js
-    ```js
-        // Header.jsx
-        import React from 'react';
 
-        function Header() {
-          return (
-            <header>Todo App</header>
-          );
-        }
+  ```js
+      // Header.jsx
+      import React from 'react';
 
-        export default Header;
-        
-        // Footer.jsx
-        import React from 'react';
+      function Header() {
+        return (
+          <header>Todo App</header>
+        );
+      }
 
-        function Footer() {
-          return (
-            <footer>
-              <p>Copyright by &copy;Anisul Islam</p>
-              <p>Developed with &hearts; Anisul Islam</p>
-            </footer>
-          );
-        }
+      export default Header;
 
-        export default Footer;
+      // Footer.jsx
+      import React from 'react';
+
+      function Footer() {
+        return (
+          <footer>
+            <p>Copyright by &copy;Anisul Islam</p>
+            <p>Developed with &hearts; Anisul Islam</p>
+          </footer>
+        );
+      }
+
+      export default Footer;
 
 
-        // Todos.jsx
-        import React from 'react';
-        import Todo from './Todo';
+      // Todos.jsx
+      import React from 'react';
+      import Todo from './Todo';
 
-        function Todos() {
-          return (
-            <div className="todos">
-              <Todo />
-            </div>
-          );
-        }
+      function Todos() {
+        return (
+          <div className="todos">
+            <Todo />
+          </div>
+        );
+      }
 
-        export default Todos;
-        
-        // Todo.js
-        import React from 'react';
+      export default Todos;
 
-        function Todo() {
-          return (
-            <div>
-              <h2>todo title </h2>
-              <p>todo desc </p>
-            </div>
-          );
-        }
+      // Todo.js
+      import React from 'react';
 
-        export default Todo;
+      function Todo() {
+        return (
+          <div>
+            <h2>todo title </h2>
+            <p>todo desc </p>
+          </div>
+        );
+      }
 
-        // App.jsx
-        import React from 'react';
-        import Todos from './components/Todos';
+      export default Todo;
 
-        function App() {
-          return (
-            <div>
-              <Header />
-              <Todos />
-              <Footer />
-            </div>
-          );
-        }
+      // App.jsx
+      import React from 'react';
+      import Todos from './components/Todos';
 
-        export default App;
+      function App() {
+        return (
+          <div>
+            <Header />
+            <Todos />
+            <Footer />
+          </div>
+        );
+      }
 
-    ```
-  
-### [6. Props and destructuring](https://youtu.be/GQx58yfYqxo)
+      export default App;
+  ```
+
+## [6. Props and destructuring](https://youtu.be/GQx58yfYqxo)
 
 - we can pass information to another component using props. Props is like a varibale or object.
 - example
@@ -227,7 +273,7 @@
   export default Todo;
   ```
 
-### [7. Mapping components](https://youtu.be/OwwmIzH7FzI)
+## [7. Mapping components](https://youtu.be/OwwmIzH7FzI)
 
 - example
 
@@ -303,8 +349,8 @@
 
   export default Todo;
   ```
-  
-### [8. CSS Styling](https://youtu.be/02YWKDxLpwk)
+
+## [8. CSS Styling](https://youtu.be/02YWKDxLpwk)
 
 - Inline styling
   ```html
@@ -351,7 +397,7 @@
     export default Footer;
     ```
 
-### [9. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
+## [9. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
 
 - state is a js object for storing current situation of a component
 
@@ -404,7 +450,7 @@
   }
   ```
 
-### [10. Conditional rendering](https://youtu.be/roSfZjXp5us)
+## [10. Conditional rendering](https://youtu.be/roSfZjXp5us)
 
 - rendering components based on if-else, element variable, ternary, short circuit
 
@@ -533,7 +579,7 @@
   export default Todos;
   ```
 
-### [11. useState Hooks](https://youtu.be/skUOiqcVurY)
+## [11. useState Hooks](https://youtu.be/skUOiqcVurY)
 
 - useState() hook helps us to track state in a functional component.
 
@@ -577,7 +623,7 @@
   export default Counter;
   ```
 
-### [12. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
+## [12. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
 
 - example
 
@@ -714,7 +760,7 @@
   export default NewTodo;
   ```
 
-### [13. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
+## [13. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
 
 - Another practical example: https://youtu.be/h7yq5lfDZc8
 - Example
@@ -723,7 +769,7 @@
   // App.js
   ```
 
-### [14. useEffect Hook]()
+## [14. useEffect Hook]()
 
 - Example 1
 
@@ -822,7 +868,7 @@
   export default UseEffectExample;
   ```
 
-### [15. fatch data using useEffect Hook]()
+## [15. fatch data using useEffect Hook]()
 
 - example
 
@@ -876,7 +922,7 @@
   export default UseEffectHook;
   ```
 
-### [16. how to create custom hook]()
+## [16. how to create custom hook]()
 
 - example
 
@@ -914,36 +960,36 @@
 
   export default useFetch;
   ```
-  
-### [17. add font awesome icons]()
+
+## [17. add font awesome icons]()
 
 - steps
 
   ```js
      // Add SVG Core
     npm i --save @fortawesome/fontawesome-svg-core
-    
+
     // add Free icons styles
     npm i --save @fortawesome/free-solid-svg-icons
     npm i --save @fortawesome/free-regular-svg-icons
-    npm i --save @fortawesome/free-brands-svg-icons   
-    
+    npm i --save @fortawesome/free-brands-svg-icons
+
     // add the react component
     npm i --save @fortawesome/react-fontawesome@latest
 
-    
+
     // usage
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
     import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
     import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-    
+
     <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
-    
+
     // use className for styling icons
 
-   ```
-   
-### [18. useRef hook]()
+  ```
+
+## [18. useRef hook]()
 
 - example
 
@@ -951,17 +997,18 @@
 
   ```
 
-### [19. react routing](https://youtu.be/YeW84KZVVbE)
+## [19. react routing](https://youtu.be/YeW84KZVVbE)
 
 - [react-routing-project](https://github.com/anisul-Islam/react-routing-project)
 
-### [20. react todo projects]()
+## [20. react todo projects]()
 
 - [react todo project](https://github.com/anisul-Islam/react-todo-project)
 
+## [21. react memo]()
 
-### [21. react memo]()
 - It helps to avoid unnecessary components rendering
+
   ```js
        // App.js
        import React, { useState } from 'react';
@@ -1001,9 +1048,12 @@
 
     export default memo(Message);
   ```
-### [22. useCallback Hook]()
+
+## [22. useCallback Hook]()
+
 - It helps to avoid unnecessary components rendering for defining callback methods
-- only component will be rendered when some states or props change 
+- only component will be rendered when some states or props change
+
   ```js
        // App.js
        import React, { useState, useCallback, useMemo } from 'react';
@@ -1051,8 +1101,11 @@
     export default React.memo(Message);
 
   ```
-  ### [23. useMemo Hook]()
+
+## [23. useMemo Hook]()
+
 - It helps to avoid taking unnecessary time for same kind of complex calculation for each rendering
+
   ```js
        // App.js
        import React, { useState, useCallback, useMemo } from 'react';
