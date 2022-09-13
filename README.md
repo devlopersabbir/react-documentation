@@ -24,7 +24,7 @@
 
 ## [3. First react app](https://youtu.be/2Ec3h0z51aI)
 
-3.1 Method 1: add React to a website with CDN
+### 3.1 Method 1: add React to a website with CDN
 
 - without JSX
 
@@ -118,7 +118,7 @@
   </html>
   ```
 
-  3.2 Method 2: create and run react app with npx
+### 3.2 Method 2: create and run react app with npx
 
 ```js
 // create react app command
@@ -129,7 +129,7 @@ cd appName
 npm start
 ```
 
-3.3 understand File structure
+### 3.3 understand File structure
 
 ## [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
 
