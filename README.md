@@ -10,7 +10,7 @@
 - React is a flexible, efficent JavaScript Library.
 - It is developed by Facebook in 2013 for building user interface.
 
-### 1.1 Why React?
+### 1.2 Why React?
 
 - It helps us to create reusable components (small and isloated pieces of code using html, css, js)
 - Load fast
@@ -20,15 +20,18 @@
 ## [2. Environment setup](https://youtu.be/4wjI8fh77GM)
 
 - VSCode
-- node.js
+- node.js (Download LTS: Long Term Support one)
+  (npm is included in node.js by default)
+- React Developer tools
 
 ## [3. First react app](https://youtu.be/2Ec3h0z51aI)
 
 ### 3.1 Method 1: add React to a website with CDN
 
-- without JSX
+- Code Example - 1 (create React app)
 
   ```html
+  <!-- without JSX -->
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -69,9 +72,10 @@
   </html>
   ```
 
-- With JSX
+- Code Example - 2 (create React app)
 
   ```html
+  <!-- With JSX -->
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -129,12 +133,49 @@ cd appName
 npm start
 ```
 
+- show how to run and stop the react app
+
 ### 3.3 understand File structure
+
+- discuss about package.json, node_modules, public, src
+- keep only the index.js in src and then play with React.js
+- change the title of the app inside index.html file
+- Code Example - 3 (render single element)
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<h1>Todo App</h1>);
+```
+
+- **React render function can render only one element**
+- Code Example - 4 (Rendering multiple elements)
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <div>
+    <h1>Todo App</h1>{" "}
+    <article>
+      <h3>Learn React.js </h3>
+      <p>
+        learn react js everyday. I will spend 1 hour everyday. I will be
+        consistent.
+      </p>
+    </article>
+  </div>
+);
+```
 
 ## [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
 
 - JSX stands for JavsScript XML which allows us to use write html inside javascript and vice versa
-- react module has babbel inside of it that helps us to run jsx: html inside javascript
+- react module has babbel inside of it that helps us to run jsx
 - Create App.js file and put the following code inside of App.js
 
   ```javascript
@@ -151,10 +192,8 @@ npm start
   function App() {
     return (
       <div>
-        <div>
-          <h2>todo title</h2>
-          <p>todo desc</p>
-        </div>
+        <h2>todo title1</h2>
+        <p>todo desc1</p>
       </div>
     );
   }
