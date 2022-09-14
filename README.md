@@ -3,6 +3,8 @@
 - prerequisities: HTML, CSS, Javascript
 - React.js official Site: https://reactjs.org/
 
+## Part-1 (Introduction to React)
+
 ## [1. Introduction to React](https://youtu.be/fRXL0X2WSK4)
 
 ### 1.1 What is React?
@@ -141,6 +143,8 @@ npm start
 - keep only the index.js in src and then play with React.js
 - change the title of the app inside index.html file
 
+## Part-2 (JSX, Component, react component under the hood, Styling, Props, PropTypes, Conditional rendering, Fragment)
+
 ## [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
 
 - **JSX: stands for JavsScript XML which allows us to use write html inside javascript and vice versa**
@@ -203,7 +207,9 @@ npm start
   );
   ```
 
-## [5. Component](https://youtu.be/qgLZSNppJOU)
+## [5. How React works under the hood](https://youtu.be/kj0cxv_dC9M)
+
+## [6. Component](https://youtu.be/qgLZSNppJOU)
 
 - **Component: A reusable building block constrcut with html, css, javascript**
 - There are 2 main types of components: functional component and class component
@@ -384,7 +390,7 @@ npm start
 
   ```
 
-## [6. Adding CSS Styling](https://youtu.be/02YWKDxLpwk)
+## [7. Adding CSS Styling part-1](https://youtu.be/02YWKDxLpwk)
 
 - Inline styling
 - CSS Stylesheet
@@ -540,7 +546,7 @@ npm start
 
   ```
 
-## [7. Props and destructuring](https://youtu.be/GQx58yfYqxo)
+## [8. Props and destructuring](https://youtu.be/GQx58yfYqxo)
 
 - **props object: we can pass information from one component to another using props object.**
 - **Code Example - 10 (Props for simple data)**
@@ -714,7 +720,9 @@ npm start
   export default Todos;
   ```
 
-## [8. Mapping components](https://youtu.be/OwwmIzH7FzI)
+## [9. PropTypes](https://youtu.be/mnPJrxHUarA)
+
+## [10. Mapping components](https://youtu.be/OwwmIzH7FzI)
 
 - **Code Example - 13 (Map component with for loop)**
 
@@ -785,7 +793,7 @@ npm start
   export default Todos;
   ```
 
-## [9. Adding unique key to each child]
+## [11. Adding unique key to each child](https://youtu.be/Dj7ynTdhy1Q)
 
 - we need to map each children of list uniquly so that react can identify them wor properly
 - we can use index or any external package like [uuid](https://www.npmjs.com/package/uuid)
@@ -822,7 +830,7 @@ npm start
   export default Todos;
   ```
 
-## [10. creating Todo Component]
+## [12. creating Todo Component]
 
 - Add more todo data in App.js
 - Create Todo.js component and make change only Todos.js
@@ -862,7 +870,7 @@ npm start
 
   ```
 
-## [11. Conditional rendering](https://youtu.be/roSfZjXp5us)
+## [13. Conditional rendering](https://youtu.be/roSfZjXp5us)
 
 - rendering components based on if-else, element variable, ternary, short circuit
 
@@ -933,9 +941,9 @@ npm start
   );
   ```
 
-## [12. Assignment 1: products-listing-app](https://github.com/anisul-Islam/react-assignment-1-products-listing-app)
+## [14. Assignment 1: products-listing-app](https://github.com/anisul-Islam/react-assignment-1-products-listing-app)
 
-## [13. More on CSS Styling](https://youtu.be/02YWKDxLpwk)
+## [15. Adding CSS Styling part-2](https://youtu.be/02YWKDxLpwk)
 
 - Inline styling
 
@@ -945,7 +953,6 @@ npm start
       </div>
   ```
 
-- CSS Stylesheet
 - CSS module
 
   - create a file name such as fileName.module.css as shown below
@@ -984,7 +991,41 @@ npm start
     export default Footer;
     ```
 
-## [14. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
+## [16. Fragment](https://youtu.be/tw8Lj2xPf3I)
+
+## Part-3 (class component, state, useState hook, event handler, controlled component, state lifting, react dev-tools, more on css)
+
+## [17. add font awesome / react icons](https://youtu.be/jHDP6myBXRM)
+
+- steps
+
+  ```js
+     // Add SVG Core
+    npm i --save @fortawesome/fontawesome-svg-core
+
+    // add Free icons styles
+    npm i --save @fortawesome/free-solid-svg-icons
+    npm i --save @fortawesome/free-regular-svg-icons
+    npm i --save @fortawesome/free-brands-svg-icons
+
+    // add the react component
+    npm i --save @fortawesome/react-fontawesome@latest
+
+
+    // usage
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+    import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+
+    <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
+
+    // use className for styling icons
+
+  ```
+
+## [18. class component](https://youtu.be/fu76idgpuEI)
+
+## [19. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
 
 - state is a js object for storing current situation of a component
 
@@ -1037,7 +1078,7 @@ npm start
   }
   ```
 
-## [15. useState Hooks](https://youtu.be/skUOiqcVurY)
+## [20. useState Hooks](https://youtu.be/skUOiqcVurY)
 
 - useState() hook helps us to track state in a functional component.
 
@@ -1081,12 +1122,13 @@ npm start
   export default Counter;
   ```
 
-## [16. Assignment - 2: Counter App](https://github.com/anisul-Islam/react-assignment-2-counter-app)
+## [1. developer tools and extension](https://youtu.be/m1paEcDlC5U)
 
-## [17. Add Todo using useState hook]
+## [22. Assignment - 2: Counter App](https://github.com/anisul-Islam/react-assignment-2-counter-app)
 
-## [18. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
+## [23. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
 
+- AddTodo component
 - store newTodo data inside a state variable and update total todos
 - example
 
@@ -1222,7 +1264,7 @@ npm start
   export default NewTodo;
   ```
 
-## [19. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
+## [24. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
 
 - Another practical example: https://youtu.be/h7yq5lfDZc8
 - Example
@@ -1231,9 +1273,13 @@ npm start
   // App.js
   ```
 
-## [20. Assignment - 3: Add New Product](https://github.com/anisul-Islam/react-assignment-3-add-new-product)
+## [25. dynamic styling in React](https://youtu.be/Eru9-kZfhw4)
 
-## [21. useEffect Hook]()
+## [26. Assignment - 3: Add New Product](https://github.com/anisul-Islam/react-assignment-3-add-new-product)
+
+## Part-4 (useEffect Hook, custom hook)
+
+## [27. useEffect Hook](https://youtu.be/XEU3jlV9syI)
 
 - Example 1
 
@@ -1332,7 +1378,7 @@ npm start
   export default UseEffectExample;
   ```
 
-## [22. fatch data using useEffect Hook]()
+## [28. fatch data using useEffect Hook](https://youtu.be/Z-EkslDJTJI)
 
 - example
 
@@ -1386,7 +1432,7 @@ npm start
   export default UseEffectHook;
   ```
 
-## [23. how to create custom hook]()
+## [29. how to create custom hook](https://youtu.be/ZWschU7H_20)
 
 - example
 
@@ -1425,37 +1471,11 @@ npm start
   export default useFetch;
   ```
 
-## [24. Assignment 4 - fetch products](https://github.com/anisul-Islam/react-assignment-4-fetch-products)
+## [30. Assignment 4 - fetch products](https://github.com/anisul-Islam/react-assignment-4-fetch-products)
 
-## [25. add font awesome icons]()
+## Part-5 (useRef Hook, uncontrolled component, useReducer Hook, modal)
 
-- steps
-
-  ```js
-     // Add SVG Core
-    npm i --save @fortawesome/fontawesome-svg-core
-
-    // add Free icons styles
-    npm i --save @fortawesome/free-solid-svg-icons
-    npm i --save @fortawesome/free-regular-svg-icons
-    npm i --save @fortawesome/free-brands-svg-icons
-
-    // add the react component
-    npm i --save @fortawesome/react-fontawesome@latest
-
-
-    // usage
-    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-    import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
-    import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-
-    <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
-
-    // use className for styling icons
-
-  ```
-
-## [26. useRef hook]()
+## [31. useRef hook](https://youtu.be/l5z137GWakU)
 
 - example
 
@@ -1463,15 +1483,29 @@ npm start
 
   ```
 
-## [27. react routing](https://youtu.be/YeW84KZVVbE)
+## [32. useReducer hook](https://youtu.be/l_BhBNhNwhE)
 
-- [react-routing-project](https://github.com/anisul-Islam/react-routing-project)
+- example
 
-## [28. react todo projects]()
+  ```js
+
+  ```
+
+## [33. useReducer hook Example Modal]
+
+- example
+
+  ```js
+
+  ```
+
+## [34. react todo projects]
 
 - [react todo project](https://github.com/anisul-Islam/react-todo-project)
 
-## [29. react memo]()
+## Part-6 (Optimization: React.memo(), useCallback(), useMemo())
+
+## [35. react memo](https://youtu.be/pwh4oyGpVPk)
 
 - It helps to avoid unnecessary components rendering
 
@@ -1515,7 +1549,7 @@ npm start
     export default memo(Message);
   ```
 
-## [30. useCallback Hook]()
+## [36. useCallback Hook](https://youtu.be/t9qUJ0SRQuE)
 
 - It helps to avoid unnecessary components rendering for defining callback methods
 - only component will be rendered when some states or props change
@@ -1568,7 +1602,7 @@ npm start
 
   ```
 
-## [31. useMemo Hook]()
+## [37. useMemo Hook](https://youtu.be/_namSWWPMeU)
 
 - It helps to avoid taking unnecessary time for same kind of complex calculation for each rendering
 
@@ -1622,3 +1656,52 @@ npm start
     export default React.memo(Message);
 
   ```
+
+## Part-7 (react routing)
+
+- [react-routing-project](https://github.com/anisul-Islam/react-routing-project)
+
+## [38. Introduction to Routing](https://youtu.be/1_powatXjds)
+
+## [39. Navigation and redirect](https://youtu.be/DooqgS1JDg0)
+
+## [40. dynamic routing using useParams](https://youtu.be/g5B0Vq3jHbA)
+
+## [41. useLocation hook](https://youtu.be/EKmr00ZKkCg)
+
+## [42. route parameter, query parameter](https://youtu.be/uQtNSOUepVE)
+
+## [43. https://youtu.be/MqFZ-tewuW0](https://youtu.be/MqFZ-tewuW0)
+
+## Part-8 (CRUD Operations - http methods)
+
+## [44. Read Users](https://youtu.be/gnHdHFqlfew)
+
+## [45. Delete User](https://youtu.be/IX-1n_eHF0s)
+
+## [46. Create User](https://youtu.be/JOAiEGOqAmo)
+
+## [47. Update User](https://youtu.be/msrcslJPsjY)
+
+## Part-9 (props drilling, useContext Hook)
+
+## [48. Props drilling](https://youtu.be/_JNIQXYSUu4)
+
+## [49. useContext Hook](https://youtu.be/RYeRn5_xL7k)
+
+## [50. Theme change project using useContext]
+
+## Part-10 (redux, redex toolkit)
+
+- check redux videos and then redux-toolkit
+- how to use redux devtools
+
+## [51. Counter App using Redux-toolkit](https://youtu.be/1aOGY0rRBQk)
+
+## [52. Fetch data using Redux-toolkit](https://youtu.be/LoK2bQUPjsY)
+
+## [53. Books CRUD APP using Redux-toolkit](https://youtu.be/No1FYwxK6Es)
+
+- [Project's GitHub link](https://github.com/anisul-Islam/redux-toolkit-crud-app)
+
+## Part-11 (React + Typescript)
