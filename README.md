@@ -822,7 +822,7 @@ npm start
   export default Todos;
   ```
 
-## [10. Complete Todo App by creating Todo Component]
+## [10. creating Todo Component]
 
 - Add more todo data in App.js
 - Create Todo.js component and make change only Todos.js
@@ -862,9 +862,80 @@ npm start
 
   ```
 
-## [11. Assignment 1: products-listing-app](https://github.com/anisul-Islam/react-assignment-1-products-listing-app)
+## [11. Conditional rendering](https://youtu.be/roSfZjXp5us)
 
-## [12. More on CSS Styling](https://youtu.be/02YWKDxLpwk)
+- rendering components based on if-else, element variable, ternary, short circuit
+
+- **Code Example - 18 (Conditional rendering: element variable)**
+
+  ```js
+  // Inside App.js make adjustments
+  let todosElement;
+  if (todosData.length > 0) {
+    todosElement = <Todos todos={todosData} />;
+  } else {
+    todosElement = <p>Todo list is empty</p>;
+  }
+  return (
+    <div>
+      <Header />
+      <main>{todosElement}</main>
+      <Footer />
+    </div>
+  );
+  ```
+
+- **Code Example - 19 (Conditional rendering: iternary)**
+
+  ```js
+  // Inside App.js make adjustments
+  let todosElement =
+    todosData.length > 0 ? (
+      <Todos todos={todosData} />
+    ) : (
+      <p>Todo list is empty</p>
+    );
+
+  return (
+    <div>
+      <Header />
+      <main>{todosElement}</main>
+      <Footer />
+    </div>
+  );
+
+  // An alternative - we can use ternary inside return () function
+  return (
+    <div>
+      <Header />
+      <main>
+        {todosData.length > 0 ? (
+          <Todos todos={todosData} />
+        ) : (
+          <p>Todo list is empty</p>
+        )}
+      </main>
+      <Footer />
+    </div>
+  );
+  ```
+
+- **Code Example - 20 (Conditional rendering: short circuit)**
+
+  ```js
+  // Inside App.js return() make following adjustments
+  return (
+    <div>
+      <Header />
+      <main>{todosData.length > 0 && <Todos todos={todosData} />}</main>
+      <Footer />
+    </div>
+  );
+  ```
+
+## [12. Assignment 1: products-listing-app](https://github.com/anisul-Islam/react-assignment-1-products-listing-app)
+
+## [13. More on CSS Styling](https://youtu.be/02YWKDxLpwk)
 
 - Inline styling
 
@@ -913,7 +984,7 @@ npm start
     export default Footer;
     ```
 
-## [10. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
+## [14. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
 
 - state is a js object for storing current situation of a component
 
@@ -966,136 +1037,7 @@ npm start
   }
   ```
 
-## [11. Conditional rendering](https://youtu.be/roSfZjXp5us)
-
-- rendering components based on if-else, element variable, ternary, short circuit
-
-- example
-
-  ```js
-  // App.js
-  import React from "react";
-
-  import Todos from "./components/Todos";
-
-  const todos = [
-    {
-      id: 1,
-      title: "make react series",
-      body: "I have to create a lot of videos for react series starting from a scratch",
-    },
-    {
-      id: 2,
-      title: "make rest api series",
-      body: "I have to create a lot of videos for rest api before the end of February 2022",
-    },
-  ];
-
-  const App = () => {
-    return (
-      <div>
-        <h2>TO-DO App</h2>
-        <Todos todos={todos} />
-      </div>
-    );
-  };
-
-  export default App;
-  ```
-
-  ```js
-  // Todo.js
-  import React from "react";
-
-  const Todo = (props) => {
-    const { todos } = props;
-
-    const todosElements = todos.map((todo) => (
-      <div key={todo.id}>
-        <h3>{todo.title}</h3>
-        <p>{todo.body}</p>
-      </div>
-    ));
-
-    return <div>{todosElements}</div>;
-  };
-
-  export default Todo;
-  ```
-
-  ```js
-  // Todos.js
-  import React from "react";
-  import Todo from "./Todo";
-
-  const Todos = (props) => {
-    const { todos } = props;
-
-    // if-else rendering
-    if (todos.length > 0) {
-      return <div>{<Todo todos={todos} />}</div>;
-    } else {
-      return <p>no todo</p>;
-    }
-  };
-
-  export default Todos;
-  ```
-
-  ```js
-  // Todos.js
-  import React from "react";
-  import Todo from "./Todo";
-
-  const Todos = (props) => {
-    const { todos } = props;
-
-    // element varibale rendering
-    let element;
-    if (todos.length > 0) {
-      element = <div>{<Todo todos={todos} />}</div>;
-    } else {
-      element = <p>no todo</p>;
-    }
-
-    return element;
-  };
-
-  export default Todos;
-  ```
-
-  ```js
-  // Todos.js
-  import React from "react";
-  import Todo from "./Todo";
-
-  const Todos = (props) => {
-    const { todos } = props;
-
-    return (
-      // ternary rendering
-      <div>{todos.length > 0 ? <Todo todos={todos} /> : <p>no todo</p>}</div>
-    );
-  };
-
-  export default Todos;
-  ```
-
-  ```js
-  import React from "react";
-  import Todo from "./Todo";
-
-  const Todos = (props) => {
-    const { todos } = props;
-
-    // short-circuit rendering
-    return <div>{todos.length > 0 && <Todo todos={todos} />}</div>;
-  };
-
-  export default Todos;
-  ```
-
-## [12. useState Hooks](https://youtu.be/skUOiqcVurY)
+## [15. useState Hooks](https://youtu.be/skUOiqcVurY)
 
 - useState() hook helps us to track state in a functional component.
 
@@ -1139,8 +1081,13 @@ npm start
   export default Counter;
   ```
 
-## [13. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
+## [16. Assignment - 2: Counter App](https://github.com/anisul-Islam/react-assignment-2-counter-app)
 
+## [17. Add Todo using useState hook]
+
+## [18. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
+
+- store newTodo data inside a state variable and update total todos
 - example
 
   ```css
@@ -1214,7 +1161,6 @@ npm start
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      console.log(todo);
       setTodo({
         title: "",
         level: "high",
@@ -1276,7 +1222,7 @@ npm start
   export default NewTodo;
   ```
 
-## [14. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
+## [19. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
 
 - Another practical example: https://youtu.be/h7yq5lfDZc8
 - Example
@@ -1285,7 +1231,9 @@ npm start
   // App.js
   ```
 
-## [15. useEffect Hook]()
+## [20. Assignment - 3: Add New Product](https://github.com/anisul-Islam/react-assignment-3-add-new-product)
+
+## [21. useEffect Hook]()
 
 - Example 1
 
@@ -1384,7 +1332,7 @@ npm start
   export default UseEffectExample;
   ```
 
-## [16. fatch data using useEffect Hook]()
+## [22. fatch data using useEffect Hook]()
 
 - example
 
@@ -1438,7 +1386,7 @@ npm start
   export default UseEffectHook;
   ```
 
-## [17. how to create custom hook]()
+## [23. how to create custom hook]()
 
 - example
 
@@ -1477,7 +1425,9 @@ npm start
   export default useFetch;
   ```
 
-## [18. add font awesome icons]()
+## [24. Assignment 4 - fetch products](https://github.com/anisul-Islam/react-assignment-4-fetch-products)
+
+## [25. add font awesome icons]()
 
 - steps
 
@@ -1505,7 +1455,7 @@ npm start
 
   ```
 
-## [19. useRef hook]()
+## [26. useRef hook]()
 
 - example
 
@@ -1513,15 +1463,15 @@ npm start
 
   ```
 
-## [20. react routing](https://youtu.be/YeW84KZVVbE)
+## [27. react routing](https://youtu.be/YeW84KZVVbE)
 
 - [react-routing-project](https://github.com/anisul-Islam/react-routing-project)
 
-## [21. react todo projects]()
+## [28. react todo projects]()
 
 - [react todo project](https://github.com/anisul-Islam/react-todo-project)
 
-## [22. react memo]()
+## [29. react memo]()
 
 - It helps to avoid unnecessary components rendering
 
@@ -1565,7 +1515,7 @@ npm start
     export default memo(Message);
   ```
 
-## [23. useCallback Hook]()
+## [30. useCallback Hook]()
 
 - It helps to avoid unnecessary components rendering for defining callback methods
 - only component will be rendered when some states or props change
@@ -1618,7 +1568,7 @@ npm start
 
   ```
 
-## [24. useMemo Hook]()
+## [31. useMemo Hook]()
 
 - It helps to avoid taking unnecessary time for same kind of complex calculation for each rendering
 
