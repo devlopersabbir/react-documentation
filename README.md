@@ -28,7 +28,7 @@
 
 ### 3.1 Method 1: add React to a website with CDN
 
-- Code Example - 1 (create React app)
+- **Code Example - 1 (create React app)**
 
   ```html
   <!-- without JSX -->
@@ -72,7 +72,7 @@
   </html>
   ```
 
-- Code Example - 2 (create React app)
+- **Code Example - 2 (create React app)**
 
   ```html
   <!-- With JSX -->
@@ -140,188 +140,151 @@ npm start
 - discuss about package.json, node_modules, public, src
 - keep only the index.js in src and then play with React.js
 - change the title of the app inside index.html file
-- Code Example - 3 (render single element)
-
-```js
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<h1>Todo App</h1>);
-```
-
-- **React render function can render only one element**
-- Code Example - 4 (Rendering multiple elements)
-
-```js
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <div>
-    <h1>Todo App</h1>{" "}
-    <article>
-      <h3>Learn React.js </h3>
-      <p>
-        learn react js everyday. I will spend 1 hour everyday. I will be
-        consistent.
-      </p>
-    </article>
-  </div>
-);
-```
 
 ## [4. JSX and JS Expression](https://youtu.be/6-r6pBA4eUY)
 
-- JSX stands for JavsScript XML which allows us to use write html inside javascript and vice versa
+- **JSX: stands for JavsScript XML which allows us to use write html inside javascript and vice versa**
 - react module has babbel inside of it that helps us to run jsx
-- Create App.js file and put the following code inside of App.js
 
-  ```javascript
+- **Code Example - 3 (render single element)**
+
+  ```js
   import React from "react";
+  import ReactDOM from "react-dom/client";
 
-  const todoTitle1 = "make react series";
-  const todoBody1 =
-    "I have to create a lot of videos for react series starting from a scratch";
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<h1>Todo App</h1>);
+  ```
 
-  const todoTitle2 = "make REST API series";
-  const todoBody2 =
-    "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+- **React render function can render only one element**
+- **Code Example - 4 (Rendering multiple elements)**
 
-  function App() {
-    return (
-      <div>
-        <h2>todo title1</h2>
-        <p>todo desc1</p>
-      </div>
-    );
-  }
+  ```js
+  import React from "react";
+  import ReactDOM from "react-dom/client";
 
-  export default App;
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+
+  root.render(
+    <div>
+      <h1>Todo App</h1>{" "}
+      <article>
+        <h3>Make React series</h3>
+        <p>
+          I have to create a lot of videos for react series starting from a
+          scratch
+        </p>
+      </article>
+    </div>
+  );
+  ```
+
+- We can use Javascript expression inside JSX
+- **Code Example - 5 (JS Expression in JSX)**
+
+  ```js
+  import React from "react";
+  import ReactDOM from "react-dom/client";
+
+  const title1 = "Make React series";
+  const desc1 =
+    "I have to create a lot of videos for react series starting from a scratch.";
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+
+  root.render(
+    <div>
+      <h1>Todo App</h1>{" "}
+      <article>
+        <h3>{title1}</h3>
+        <p>{desc1}</p>
+      </article>
+    </div>
+  );
   ```
 
 ## [5. Component](https://youtu.be/qgLZSNppJOU)
 
-- create a folder named as components inside src folder
-- create new component and place inside components folder
-- there are 2 types of components: functional component and class component
-- example of functional component is given below
+- **Component: A reusable building block constrcut with html, css, javascript**
+- There are 2 main types of components: functional component and class component
+- keep a blank line when importing your components for separting built in modules
+- **Code Example - 6 (Create a functional component named App)**
 
-  ```js
+  ```javascript
+  // Inside index.js file
+  import React from "react";
+  import ReactDOM from "react-dom/client";
+
+  import App from "./App";
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+
+  // Inside App.js
   import React from "react";
 
-  const Todo = () => {
-    return <div>Todo</div>;
-  };
-
-  export default Todo;
-  ```
-
-- example of class component is given below
-
-  ```js
-  import React, { Component } from "react";
-
-  class Todo extends Component {
-    render() {
-      return <div>Todo</div>;
-    }
-  }
-
-  export default Todo;
-  ```
-
-- todo project example. create a file "Todos" inside component folder and use this file from App.js
-
-  ```js
-      // Header.jsx
-      import React from 'react';
-
-      function Header() {
-        return (
-          <header>Todo App</header>
-        );
-      }
-
-      export default Header;
-
-      // Footer.jsx
-      import React from 'react';
-
-      function Footer() {
-        return (
-          <footer>
-            <p>Copyright by &copy;Anisul Islam</p>
-            <p>Developed with &hearts; Anisul Islam</p>
-          </footer>
-        );
-      }
-
-      export default Footer;
-
-
-      // Todos.jsx
-      import React from 'react';
-      import Todo from './Todo';
-
-      function Todos() {
-        return (
-          <div className="todos">
-            <Todo />
-          </div>
-        );
-      }
-
-      export default Todos;
-
-      // Todo.js
-      import React from 'react';
-
-      function Todo() {
-        return (
-          <div>
-            <h2>todo title </h2>
-            <p>todo desc </p>
-          </div>
-        );
-      }
-
-      export default Todo;
-
-      // App.jsx
-      import React from 'react';
-      import Todos from './components/Todos';
-
-      function App() {
-        return (
-          <div>
-            <Header />
-            <Todos />
-            <Footer />
-          </div>
-        );
-      }
-
-      export default App;
-  ```
-
-## [6. Props and destructuring](https://youtu.be/GQx58yfYqxo)
-
-- we can pass information to another component using props. Props is like a varibale or object.
-- example
-
-  ```js
-  import React from "react";
-
-  import "./App.css";
-  import Todo from "./components/Todo";
-
-  const todoTitle = "make react series";
   const App = () => {
+    const title1 = "Make React series";
+    const desc1 =
+      "I have to create a lot of videos for react series starting from a scratch.";
     return (
       <div>
-        <Todo todoTitle={todoTitle} todoBody="this is the description" />
+        <h1>Todo App</h1>
+        <article>
+          <h3>{title1}</h3>
+          <p>{desc1} </p>
+        </article>
+      </div>
+    );
+  };
+  ```
+
+- **Code Example - 7 (Add more javascript expression)**
+
+  ```js
+  import React from "react";
+
+  const App = () => {
+    const title1 = "Make React series";
+    const desc1 =
+      "I have to create a lot of videos for react series starting from a scratch.";
+
+    const title2 = "make REST API series";
+    const desc2 =
+      "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+
+    const title3 = "make Docker series";
+    const desc3 =
+      "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic";
+
+    return (
+      <div>
+        <header>
+          <h1>Todo App</h1>
+        </header>
+
+        <main>
+          <section>
+            <article>
+              <h3>{title1}</h3>
+              <p>{desc1} </p>
+            </article>
+
+            <article>
+              <h3>{title2}</h3>
+              <p>{desc2} </p>
+            </article>
+
+            <article>
+              <h3>{title3}</h3>
+              <p>{desc3} </p>
+            </article>
+          </section>
+        </main>
+
+        <footer>
+          <p>Developed by Anisul Islam with &hearts;</p>
+        </footer>
       </div>
     );
   };
@@ -329,125 +292,588 @@ root.render(
   export default App;
   ```
 
+- **Code Example - 8 (Decompisite component)**
+
+- create a folder named as components inside src folder then create Header, Footer, Todos component for decomposing the App.js
+
   ```js
-  // create Todo.js inside components folder
-  // without destructuring
+    // Create Header.js and import it into App.js
+    import React from "react";
+
+    const Header = () => {
+      return (
+        <header>
+          <h1>Todo App</h1>
+        </header>
+      );
+    };
+
+    export default Header;
+
+    // Create Footer.js and import it into App.js
+    import React from "react";
+
+    const Footer = () => {
+      return (
+        <footer>
+          <p>Developed by Anisul Islam with &hearts;</p>
+        </footer>
+      );
+    };
+
+    export default Footer;
+
+    // Create Todos.js
+    import React from "react";
+
+    const Todos = () => {
+      return (
+        <section>
+          <article>
+            <h3>{title1}</h3>
+            <p>{desc1} </p>
+          </article>
+
+          <article>
+            <h3>{title2}</h3>
+            <p>{desc2} </p>
+          </article>
+
+          <article>
+            <h3>{title3}</h3>
+            <p>{desc3} </p>
+          </article>
+        </section>
+      );
+    };
+
+    export default Todos;
+
+    // App.js
+    import React from "react";
+
+    import Footer from "./components/Footer";
+    import Header from "./components/Header";
+    import Todos from "./components/Todos";
+
+    const App = () => {
+      const title1 = "Make React series";
+      const desc1 =
+        "I have to create a lot of videos for react series starting from a scratch.";
+
+      const title2 = "make REST API series";
+      const desc2 =
+        "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+
+      const title3 = "make Docker series";
+      const desc3 =
+        "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic";
+
+      return (
+        <div>
+          <Header />
+          <main>
+            <Todos/>
+          </main>
+          <Footer />
+        </div>
+      );
+    };
+
+    export default App;
+
+  ```
+
+## [6. Adding CSS Styling](https://youtu.be/02YWKDxLpwk)
+
+- Inline styling
+- CSS Stylesheet
+- CSS module
+- third party packages such as Material UI, styled components
+
+- **Code Example - 9 (Styling component with CSS)**
+- create and import App.css
+
+  ```css
+  /*code for the App.css */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  header {
+    height: 10vh;
+    background-color: #2c2c2c;
+    color: white;
+  }
+  main {
+    min-height: 85vh;
+    background-color: #3c3c3c;
+    padding: 1rem;
+  }
+  .todos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .todo {
+    background-color: bisque;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  footer {
+    height: 5vh;
+    background-color: #4c4c4c;
+    color: white;
+  }
+
+  /* responsive */
+  @media (max-width: 992px) {
+    .todos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 768px) {
+    .todos {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  ```
+
+  ```js
+    // Header.js
+    import React from "react";
+
+    const Header = () => {
+      return (
+        <header className="center">
+          <h1>Todo App</h1>
+        </header>
+      );
+    };
+
+    export default Header;
+
+    // Footer.js
+    import React from "react";
+
+    const Footer = () => {
+      return (
+        <footer className="center">
+          <p>Developed by Anisul Islam with &hearts;</p>
+        </footer>
+      );
+    };
+
+    export default Footer;
+
+    // Todos.js
+    import React from "react";
+
+    const Todos = () => {
+      return (
+        <section className="todos">
+          <article className="todo">
+            <h3>{title1}</h3>
+            <p>{desc1} </p>
+          </article>
+
+          <article className="todo">
+            <h3>{title2}</h3>
+            <p>{desc2} </p>
+          </article>
+
+          <article className="todo">
+            <h3>{title3}</h3>
+            <p>{desc3} </p>
+          </article>
+        </section>
+      );
+    };
+
+    export default Todos;
+
+    // App.js
+    import React from "react";
+
+    import Footer from "./components/Footer";
+    import Header from "./components/Header";
+    import Todos from "./components/Todos";
+
+    import './App.css';
+
+    const App = () => {
+      const title1 = "Make React series";
+      const desc1 =
+        "I have to create a lot of videos for react series starting from a scratch.";
+
+      const title2 = "make REST API series";
+      const desc2 =
+        "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+
+      const title3 = "make Docker series";
+      const desc3 =
+        "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic";
+
+      return (
+        <div>
+          <Header />
+          <main>
+            <Todos/>
+          </main>
+          <Footer />
+        </div>
+      );
+    };
+
+    export default App;
+
+  ```
+
+## [7. Props and destructuring](https://youtu.be/GQx58yfYqxo)
+
+- **props object: we can pass information from one component to another using props object.**
+- **Code Example - 10 (Props for simple data)**
+
+  ```js
   import React from "react";
 
-  const Todo = (props) => {
+  import Footer from "./components/Footer";
+  import Header from "./components/Header";
+  import Todos from "./components/Todos";
+
+  const App = () => {
+    const title1 = "Make React series";
+    const desc1 =
+      "I have to create a lot of videos for react series starting from a scratch.";
+
+    const title2 = "make REST API series";
+    const desc2 =
+      "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+
+    const title3 = "make Docker series";
+    const desc3 =
+      "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic";
+
     return (
       <div>
-        <h3>{props.todoTitle}</h3>
-        <p>{props.todoBody}</p>
+        <Header />
+        <main>
+          <Todos
+            title1={title1}
+            title2={title2}
+            title3={title3}
+            desc1={desc1}
+            desc2={desc2}
+            desc3={desc3}
+          />
+        </main>
+        <Footer />
       </div>
     );
   };
 
-  export default Todo;
-  ```
+  export default App;
 
-  ```js
-  // with destructuring
+  // Todos.js
   import React from "react";
 
-  const Todo = (props) => {
-    const { todoTitle, todoBody } = props;
+  const Todos = (props) => {
     return (
-      <div>
-        <h3>{todoTitle}</h3>
-        <p>{todoBody}</p>
-      </div>
+      <section className="todos">
+        <article className="todo">
+          <h3>{props.title1}</h3>
+          <p>{props.desc1} </p>
+        </article>
+
+        <article className="todo">
+          <h3>{props.title2}</h3>
+          <p>{props.desc2} </p>
+        </article>
+
+        <article className="todo">
+          <h3>{props.title3}</h3>
+          <p>{props.desc3} </p>
+        </article>
+      </section>
     );
   };
 
-  export default Todo;
+  export default Todos;
+
   ```
 
-## [7. Mapping components](https://youtu.be/OwwmIzH7FzI)
+- **Code Example - 11 (Destructuring)**
 
-- example
+  ```js
+  // Destructure the props in Todos.js
+  import React from "react";
+
+  const Todos = (props) => {
+    const { title1, title2, title3, desc1, desc2, desc3 } = props;
+    return (
+      <section className="todos">
+        <article className="todo">
+          <h3>{title1}</h3>
+          <p>{desc1} </p>
+        </article>
+
+        <article className="todo">
+          <h3>{title2}</h3>
+          <p>{desc2} </p>
+        </article>
+
+        <article className="todo">
+          <h3>{title3}</h3>
+          <p>{desc3} </p>
+        </article>
+      </section>
+    );
+  };
+
+  export default Todos;
+  ```
+
+- **Code Example - 12 (props for complex data)**
 
   ```js
   // App.js
   import React from "react";
 
-  import "./App.css";
-  import Todo from "./components/Todo";
-
-  const todos = [
-    {
-      id: 1,
-      title: "make react series",
-      body: "I have to create a lot of videos for react series starting from a scratch",
-    },
-    {
-      id: 2,
-      title: "make rest api series",
-      body: "I have to create a lot of videos for rest api before the end of February 2022",
-    },
-  ];
+  import Footer from "./components/Footer";
+  import Header from "./components/Header";
+  import Todos from "./components/Todos";
 
   const App = () => {
+    const todosData = [
+      {
+        id: 1,
+        title: "Make React series",
+        desc: "I have to create a lot of videos for react series starting from a scratch.",
+      },
+      {
+        id: 2,
+        title: "make REST API series",
+        desc: "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series",
+      },
+      {
+        id: 3,
+        title: "make Docker series",
+        desc: "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic.",
+      },
+    ];
+
     return (
       <div>
-        <h2>TO-DO App</h2>
-        <Todo todos={todos} />
+        <Header />
+        <main>
+          <Todos todos={todosData} />
+        </main>
+        <Footer />
       </div>
     );
   };
 
   export default App;
+
+  // Todos.js
+  import React from "react";
+
+  const Todos = (props) => {
+    const { todos } = props;
+    return (
+      <section className="todos">
+        <article className="todo">
+          <h3>{todos[0].title}</h3>
+          <p>{todos[0].desc} </p>
+        </article>
+
+        <article className="todo">
+          <h3>{todos[1].title}</h3>
+          <p>{todos[1].desc} </p>
+        </article>
+
+        <article className="todo">
+          <h3>{todos[2].title}</h3>
+          <p>{todos[2].desc} </p>
+        </article>
+      </section>
+    );
+  };
+
+  export default Todos;
   ```
+
+## [8. Mapping components](https://youtu.be/OwwmIzH7FzI)
+
+- **Code Example - 13 (Map component with for loop)**
+
+  ```js
+  import React from "react";
+
+  const Todos = (props) => {
+    const { todos } = props;
+    let renderTodosElement = [];
+    for (let index = 0; index < todos.length; index++) {
+      renderTodosElement.push(
+        <article className="todo">
+          <h3>{todos[index].title}</h3>
+          <p>{todos[index].desc} </p>
+        </article>
+      );
+    }
+
+    return <section className="todos">{renderTodosElement}</section>;
+  };
+
+  export default Todos;
+  ```
+
+- **Code Example - 14 (Map component with forEach higher order Array function)**
+
+  ```js
+  import React from "react";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    let renderTodosElement = [];
+
+    todos.forEach((todo) =>
+      renderTodosElement.push(
+        <article className="todo">
+          <h3>{todo.title}</h3>
+          <p>{todo.desc} </p>
+        </article>
+      )
+    );
+
+    return <section className="todos">{renderTodosElement}</section>;
+  };
+
+  export default Todos;
+  ```
+
+- **Code Example - 15 (Map component with map higher order Array function)**
+
+  ```js
+  import React from "react";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    const renderTodosElement = todos.map((todo) => (
+      <article className="todo">
+        <h3>{todo.title}</h3>
+        <p>{todo.desc} </p>
+      </article>
+    ));
+
+    return <section className="todos">{renderTodosElement}</section>;
+  };
+
+  export default Todos;
+  ```
+
+## [9. Adding unique key to each child]
+
+- we need to map each children of list uniquly so that react can identify them wor properly
+- we can use index or any external package like [uuid](https://www.npmjs.com/package/uuid)
+- How to use uuid:
+
+  ```js
+  step 1: npm install uuid
+  step 2: import { v4 as uuidv4 } from "uuid";
+  step 3: uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+  ```
+
+- **Code Example - 16 (Adding unique key)**
+
+  ```js
+  // first use index
+  // second use the available id
+  // thirs use the uuid if id is not available inside the data
+
+  import React from "react";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    const renderTodosElement = todos.map((todo) => (
+      <article className="todo" key={todo.id}>
+        <h3>{todo.title}</h3>
+        <p>{todo.desc} </p>
+      </article>
+    ));
+
+    return <section className="todos">{renderTodosElement}</section>;
+  };
+
+  export default Todos;
+  ```
+
+## [10. Complete Todo App by creating Todo Component]
+
+- Add more todo data in App.js
+- Create Todo.js component and make change only Todos.js
+- **Code Example - 17 (Adding Todo Component)**
 
   ```js
   // Todo.js
   import React from "react";
 
   const Todo = (props) => {
-    const { todos } = props;
+    const { todo } = props;
     return (
-      <div>
-        {todos.map((todo) => (
-          <div key={todo.id}>
-            <h3>{todo.title}</h3>
-            <p>{todo.body}</p>
-          </div>
-        ))}
-      </div>
+      <article className="todo" key={todo.id}>
+        <h3>{todo.title}</h3>
+        <p>{todo.desc} </p>
+      </article>
     );
   };
 
   export default Todo;
-  ```
 
-  ```js
-  // we can make the JSX of Todo.js more cleaner as shown below
+  // Todos.js
   import React from "react";
+  import Todo from "./Todo";
 
-  const Todo = (props) => {
+  const Todos = (props) => {
     const { todos } = props;
 
-    const todoElements = todos.map((todo) => (
-      <div key={todo.id}>
-        <h3>{todo.title}</h3>
-        <p>{todo.body}</p>
-      </div>
+    const renderTodosElement = todos.map((todo) => (
+      <Todo key={todo.id} todo={todo} />
     ));
 
-    return <div>{todoElements}</div>;
+    return <section className="todos">{renderTodosElement}</section>;
   };
 
-  export default Todo;
+  export default Todos;
+
   ```
 
-## [8. CSS Styling](https://youtu.be/02YWKDxLpwk)
+## [11. Assignment 1: products-listing-app](https://github.com/anisul-Islam/react-assignment-1-products-listing-app)
+
+## [12. More on CSS Styling](https://youtu.be/02YWKDxLpwk)
 
 - Inline styling
+
   ```html
     <div style={{ width: "300px", backgroundColor: "pink" }}>
         Inline styling
       </div>
   ```
+
 - CSS Stylesheet
 - CSS module
 
@@ -487,7 +913,7 @@ root.render(
     export default Footer;
     ```
 
-## [9. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
+## [10. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
 
 - state is a js object for storing current situation of a component
 
@@ -540,7 +966,7 @@ root.render(
   }
   ```
 
-## [10. Conditional rendering](https://youtu.be/roSfZjXp5us)
+## [11. Conditional rendering](https://youtu.be/roSfZjXp5us)
 
 - rendering components based on if-else, element variable, ternary, short circuit
 
@@ -669,7 +1095,7 @@ root.render(
   export default Todos;
   ```
 
-## [11. useState Hooks](https://youtu.be/skUOiqcVurY)
+## [12. useState Hooks](https://youtu.be/skUOiqcVurY)
 
 - useState() hook helps us to track state in a functional component.
 
@@ -713,7 +1139,7 @@ root.render(
   export default Counter;
   ```
 
-## [12. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
+## [13. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
 
 - example
 
@@ -850,7 +1276,7 @@ root.render(
   export default NewTodo;
   ```
 
-## [13. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
+## [14. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
 
 - Another practical example: https://youtu.be/h7yq5lfDZc8
 - Example
@@ -859,7 +1285,7 @@ root.render(
   // App.js
   ```
 
-## [14. useEffect Hook]()
+## [15. useEffect Hook]()
 
 - Example 1
 
@@ -958,7 +1384,7 @@ root.render(
   export default UseEffectExample;
   ```
 
-## [15. fatch data using useEffect Hook]()
+## [16. fatch data using useEffect Hook]()
 
 - example
 
@@ -1012,7 +1438,7 @@ root.render(
   export default UseEffectHook;
   ```
 
-## [16. how to create custom hook]()
+## [17. how to create custom hook]()
 
 - example
 
@@ -1051,7 +1477,7 @@ root.render(
   export default useFetch;
   ```
 
-## [17. add font awesome icons]()
+## [18. add font awesome icons]()
 
 - steps
 
@@ -1079,7 +1505,7 @@ root.render(
 
   ```
 
-## [18. useRef hook]()
+## [19. useRef hook]()
 
 - example
 
@@ -1087,15 +1513,15 @@ root.render(
 
   ```
 
-## [19. react routing](https://youtu.be/YeW84KZVVbE)
+## [20. react routing](https://youtu.be/YeW84KZVVbE)
 
 - [react-routing-project](https://github.com/anisul-Islam/react-routing-project)
 
-## [20. react todo projects]()
+## [21. react todo projects]()
 
 - [react todo project](https://github.com/anisul-Islam/react-todo-project)
 
-## [21. react memo]()
+## [22. react memo]()
 
 - It helps to avoid unnecessary components rendering
 
@@ -1139,7 +1565,7 @@ root.render(
     export default memo(Message);
   ```
 
-## [22. useCallback Hook]()
+## [23. useCallback Hook]()
 
 - It helps to avoid unnecessary components rendering for defining callback methods
 - only component will be rendered when some states or props change
@@ -1192,7 +1618,7 @@ root.render(
 
   ```
 
-## [23. useMemo Hook]()
+## [24. useMemo Hook]()
 
 - It helps to avoid taking unnecessary time for same kind of complex calculation for each rendering
 
