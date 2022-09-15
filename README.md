@@ -333,6 +333,18 @@ npm start
     import React from "react";
 
     const Todos = () => {
+      const title1 = "Make React series";
+    const desc1 =
+      "I have to create a lot of videos for react series starting from a scratch.";
+
+    const title2 = "make REST API series";
+    const desc2 =
+      "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+
+    const title3 = "make Docker series";
+    const desc3 =
+      "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic";
+
       return (
         <section>
           <article>
@@ -516,20 +528,21 @@ npm start
     import Header from "./components/Header";
     import Todos from "./components/Todos";
 
+    import { todosData } from "./data";
     import './App.css';
 
     const App = () => {
       const title1 = "Make React series";
-      const desc1 =
-        "I have to create a lot of videos for react series starting from a scratch.";
+    const desc1 =
+      "I have to create a lot of videos for react series starting from a scratch.";
 
-      const title2 = "make REST API series";
-      const desc2 =
-        "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
+    const title2 = "make REST API series";
+    const desc2 =
+      "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series";
 
-      const title3 = "make Docker series";
-      const desc3 =
-        "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic";
+    const title3 = "make Docker series";
+    const desc3 =
+      "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic";
 
       return (
         <div>
@@ -720,11 +733,45 @@ npm start
   export default Todos;
   ```
 
-## [9. PropTypes](https://youtu.be/mnPJrxHUarA)
+## [9. Module - Export, import in details]
+
+- create data.js in src folder and move all the todos dummy data there and import in App.js for using it.
+
+- **Code Example - 13 (Module- export, import)**
+
+  ```js
+  // src/data.js
+  import { getUniqueId } from "./utility/getUniqueId";
+  export const todosData = [
+    {
+      id: getUniqueId(),
+      title: "Make React series",
+      desc: "I have to create a lot of videos for react series starting from a scratch.",
+    },
+    {
+      id: getUniqueId(),
+      title: "Make REST API series",
+      desc: "I have already crated node.js, express.js, ejs and mongodb series. It is time for making a REST API series",
+    },
+    {
+      id: getUniqueId(),
+      title: "Make Docker series",
+      desc: "It has a been while planning for Docker series. It is now hight time to start a series for this demanding topic.",
+    },
+    {
+      id: getUniqueId(),
+      title: "Complete Go lang series",
+      desc: "I really wish to complete this series but beacuse of time limitation I am unable to do this.",
+    },
+  ];
+
+  // import the data.js in App.js
+  import { todosData } from "./data";
+  ```
 
 ## [10. Mapping components](https://youtu.be/OwwmIzH7FzI)
 
-- **Code Example - 13 (Map component with for loop)**
+- **Code Example - 14 (Map component with for loop)**
 
   ```js
   import React from "react";
@@ -747,7 +794,7 @@ npm start
   export default Todos;
   ```
 
-- **Code Example - 14 (Map component with forEach higher order Array function)**
+- **Code Example - 15 (Map component with forEach higher order Array function)**
 
   ```js
   import React from "react";
@@ -772,7 +819,7 @@ npm start
   export default Todos;
   ```
 
-- **Code Example - 15 (Map component with map higher order Array function)**
+- **Code Example - 16 (Map component with map higher order Array function)**
 
   ```js
   import React from "react";
@@ -803,9 +850,10 @@ npm start
   step 1: npm install uuid
   step 2: import { v4 as uuidv4 } from "uuid";
   step 3: uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+
   ```
 
-- **Code Example - 16 (Adding unique key)**
+- **Code Example - 17 (Adding unique key)**
 
   ```js
   // first use index
@@ -828,13 +876,19 @@ npm start
   };
 
   export default Todos;
+
+  // get a uniqueId -> utility/getUniqueId.js
+  import { v4 as uuidv4 } from "uuid";
+  export const getUniqueId = () => uuidv4();
+
+  // Now add the unique Id in App.js
   ```
 
 ## [12. creating Todo Component]
 
 - Add more todo data in App.js
 - Create Todo.js component and make change only Todos.js
-- **Code Example - 17 (Adding Todo Component)**
+- **Code Example - 18 (Adding Todo Component)**
 
   ```js
   // Todo.js
@@ -870,11 +924,82 @@ npm start
 
   ```
 
-## [13. Conditional rendering](https://youtu.be/roSfZjXp5us)
+## [13. PropTypes](https://youtu.be/mnPJrxHUarA)
+
+- [documentation is here](https://reactjs.org/docs/typechecking-with-proptypes.html)
+- **catch bugs with typechecking.**
+- We can use Typescript or Flow for checking types in the entire application for sure but PropTypes can be the first guard here for checking types.
+
+- default props is essential when first time running without any value passing to props
+
+  ```js
+    // lets think value can be primary or secondary one of two valyes
+    <List background = 'primary' >
+
+    // checking prop types
+    background: PropTypes.oneOf([
+      'primary',
+      'secondary'
+    ])
+  ```
+
+- **Code Example - 19 (PropTypes)**
+
+  ```js
+  // Todos.js
+  import React from "react";
+  import PropTypes from "prop-types";
+
+  import Todo from "./Todo";
+
+  const Todos = (props) => {
+    const { todos } = props;
+
+    const renderTodosElement = todos.map((todo) => (
+      <Todo key={todo.id} todo={todo} />
+    ));
+
+    return <section className="todos">{renderTodosElement}</section>;
+  };
+  Todos.defaultProps = {
+    todos: [],
+  };
+  Todos.propTypes = {
+    todos: PropTypes.array,
+  };
+
+  export default Todos;
+
+  // Todo.js
+  import React from "react";
+  import PropTypes from "prop-types";
+
+  const Todo = (props) => {
+    const { todo } = props;
+    return (
+      <article className="todo" key={todo.id}>
+        <h3>{todo.title}</h3>
+        <p>{todo.desc} </p>
+      </article>
+    );
+  };
+
+  Todo.propTypes = {
+    todo: PropTypes.shape({
+      title: PropTypes.string,
+      desc: PropTypes.string,
+    }),
+  };
+
+  export default Todo;
+
+  ```
+
+## [14. Conditional rendering](https://youtu.be/roSfZjXp5us)
 
 - rendering components based on if-else, element variable, ternary, short circuit
 
-- **Code Example - 18 (Conditional rendering: element variable)**
+- **Code Example - 20 (Conditional rendering: element variable)**
 
   ```js
   // Inside App.js make adjustments
@@ -893,7 +1018,7 @@ npm start
   );
   ```
 
-- **Code Example - 19 (Conditional rendering: iternary)**
+- **Code Example - 21 (Conditional rendering: iternary)**
 
   ```js
   // Inside App.js make adjustments
@@ -928,7 +1053,7 @@ npm start
   );
   ```
 
-- **Code Example - 20 (Conditional rendering: short circuit)**
+- **Code Example - 22 (Conditional rendering: short circuit)**
 
   ```js
   // Inside App.js return() make following adjustments
@@ -941,9 +1066,9 @@ npm start
   );
   ```
 
-## [14. Assignment 1: products-listing-app](https://github.com/anisul-Islam/react-assignment-1-products-listing-app)
+## [15. Assignment 1: products-listing-app](https://github.com/anisul-Islam/react-assignment-1-products-listing-app)
 
-## [15. Adding CSS Styling part-2](https://youtu.be/02YWKDxLpwk)
+## [16. Adding CSS Styling part-2](https://youtu.be/02YWKDxLpwk)
 
 - Inline styling
 
@@ -991,13 +1116,85 @@ npm start
     export default Footer;
     ```
 
-## [16. Fragment](https://youtu.be/tw8Lj2xPf3I)
+## [17. Fragment](https://youtu.be/tw8Lj2xPf3I)
+
+- React.Fragment or <> </> helps us to avoid div soup or unncessary div nesting
+- **Code Example - 23 (Fragment)**
+
+  ```js
+  // Inside App.js
+  return (
+    <>
+      <Header />
+      <main>{todosData.length > 0 && <Todos todos={todosData} />}</main>
+      <Footer />
+    </>
+  );
+  ```
 
 ## Part-3 (class component, state, useState hook, event handler, controlled component, state lifting, react dev-tools, more on css)
 
-## [17. add font awesome / react icons](https://youtu.be/jHDP6myBXRM)
+## [18. add font awesome / react icons](https://youtu.be/jHDP6myBXRM)
 
-- steps
+- [How to use react-icons](https://react-icons.github.io/react-icons/)
+- **Code Example - 24 (Adding & styling react icons )**
+
+  ```js
+  // Add button + icons inside Todo.js
+  import React from "react";
+  import PropTypes from "prop-types";
+  import { FaTrash, FaEdit } from "react-icons/fa";
+
+  const Todo = (props) => {
+    const { todo } = props;
+    return (
+      <article className="todo" key={todo.id}>
+        <h3>{todo.title}</h3>
+        <p>{todo.desc} </p>
+        <div className="buttons">
+          <button className="btn">
+            <FaEdit className="icon" />
+          </button>
+          <button className="btn">
+            <FaTrash className="icon" />
+          </button>
+        </div>
+      </article>
+    );
+  };
+
+  Todo.propTypes = {
+    todo: PropTypes.shape({
+      title: PropTypes.string,
+      desc: PropTypes.string,
+    }),
+  };
+
+  export default Todo;
+  ```
+
+  ```css
+  /*Add the following css in App.css*/
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .icon {
+    font-size: 2rem;
+    transition: all 0.3s;
+  }
+  .icon:hover {
+    color: orange;
+  }
+  ```
+
+- How to use font awesome icons directly
 
   ```js
      // Add SVG Core
@@ -1023,13 +1220,87 @@ npm start
 
   ```
 
-## [18. class component](https://youtu.be/fu76idgpuEI)
+## [19. useState Hooks](https://youtu.be/skUOiqcVurY)
 
-## [19. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
+- useState() hook helps us to track state in a functional component.
+- **Code Example - 25 (Counter App )**
+
+  ```js
+  // App.js
+  import React from "react";
+
+  import Counter from "./components/Counter";
+
+  const App = () => {
+    return (
+      <div>
+        <Counter />
+      </div>
+    );
+  };
+
+  export default App;
+  ```
+
+  ```js
+  // Counter.js
+  import React, { useState } from "react";
+
+  function Counter() {
+    const [count, setCount] = useState(0);
+    const handleIncrement = () => {
+      setCount(count + 1);
+    };
+
+    return (
+      <div>
+        <h2>Counter: {count}</h2>
+        <button onClick={handleIncrement}>+</button>
+      </div>
+    );
+  }
+
+  export default Counter;
+  ```
+
+- **Code Example - 26(store data in state )**
+
+  ```js
+  import React, { useState } from "react";
+
+  import Footer from "./components/Footer";
+  import Header from "./components/Header";
+  import Todos from "./components/Todos";
+
+  import { todosData } from "./data";
+  import "./App.css";
+
+  const App = () => {
+    const [todos, setTodos] = useState(todosData);
+
+    return (
+      <>
+        <Header />
+        <main>{todos.length > 0 && <Todos todos={todosData} />}</main>
+        <Footer />
+      </>
+    );
+  };
+
+  export default App;
+  ```
+
+## [20. developer tools and extension](https://youtu.be/m1paEcDlC5U)
+
+## [21. Assignment - 2: Counter App](https://github.com/anisul-Islam/react-assignment-2-counter-app)
+
+## [22. class component](https://youtu.be/fu76idgpuEI)
+
+## [23. state, setState, event handler](https://youtu.be/9AtJ4dM2xOU)
 
 - state is a js object for storing current situation of a component
 
-- example
+- **Code Example - 27 (Counter App using class component)**
 
   ```js
   // App.js
@@ -1078,208 +1349,390 @@ npm start
   }
   ```
 
-## [20. useState Hooks](https://youtu.be/skUOiqcVurY)
+## [24. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
 
-- useState() hook helps us to track state in a functional component.
-
-- example
+- create and complete AddTodo component
+- store newTodo data inside a state variable and update total todos
+- **Code Example - 28 (get data from a form)**
 
   ```js
-  // App.js
-  import React from "react";
+  // In App.js
 
-  import Counter from "./components/Counter";
+  import AddTodo from "./components/AddTodo";
+  import { todosData } from "./data";
+  import "./App.css";
 
   const App = () => {
+    const [todos, setTodos] = useState(todosData);
+
     return (
-      <div>
-        <Counter />
-      </div>
+      <>
+        <Header />
+        <main>
+          <AddTodo />
+          {todos.length > 0 && <Todos todos={todosData} />}
+        </main>
+        <Footer />
+      </>
     );
   };
 
   export default App;
-  ```
 
-  ```js
-  // Counter.js
+  // AddTodo.js component
   import React, { useState } from "react";
+  import { getUniqueId } from "../utility/getUniqueId";
 
-  function Counter() {
-    const [count, setCount] = useState(0);
-    const handleIncrement = () => {
-      setCount(count + 1);
+  const AddTodo = () => {
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+
+    const handleTitleChange = (event) => {
+      setTitle(event.target.value);
     };
 
-    return (
-      <div>
-        <h2>Counter: {count}</h2>
-        <button onClick={handleIncrement}>+</button>
-      </div>
-    );
-  }
-
-  export default Counter;
-  ```
-
-## [1. developer tools and extension](https://youtu.be/m1paEcDlC5U)
-
-## [22. Assignment - 2: Counter App](https://github.com/anisul-Islam/react-assignment-2-counter-app)
-
-## [23. Form Controlled components](https://youtu.be/kvGNlTh3rNQ)
-
-- AddTodo component
-- store newTodo data inside a state variable and update total todos
-- example
-
-  ```css
-  /* new-todo.module.css */
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-  }
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    width: 40%;
-    padding: 1rem;
-  }
-
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  }
-  .form-field {
-    margin: 1rem 0;
-  }
-  input,
-  select,
-  textarea {
-    padding: 0.5rem;
-    width: 100%;
-  }
-
-  input:focus,
-  select:focus,
-  textarea:focus {
-    background-color: antiquewhite;
-  }
-
-  textarea {
-    resize: none;
-    height: 10rem;
-  }
-
-  button {
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem 2rem;
-    background-color: rgb(245, 169, 5);
-    text-transform: uppercase;
-    transition: all 0.3s;
-  }
-  button:hover {
-    transform: scale(1.1);
-  }
-  ```
-
-  ```js
-  // NewTodo.js
-  import React, { useState } from "react";
-
-  import styles from "./new-todo.module.css";
-
-  const NewTodo = () => {
-    const [todo, setTodo] = useState({
-      title: "",
-      level: "high",
-      body: "",
-    });
-
-    const handleInputChange = (event) => {
-      setTodo({ ...todo, [event.target.name]: event.target.value });
+    const handleDescriptionChange = (event) => {
+      setDesc(event.target.value);
     };
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      setTodo({
-        title: "",
-        level: "high",
-        body: "",
-      });
+      const newTodo = { id: getUniqueId(), title, desc };
+      console.log(newTodo);
+      setTitle("");
+      setDesc("");
     };
 
     return (
-      <div className={styles.container}>
-        <div className={styles.card}>
-          <h2>New Todo</h2>
-          <form onSubmit={handleSubmit}>
-            <div className={styles["form-field"]}>
-              <label htmlFor="title">Title: </label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                onChange={handleInputChange}
-                value={todo.title}
-                required
-              />
-            </div>
-            <div className={styles["form-field"]}>
-              <label htmlFor="level">Level of Importance: </label>
-              <select
-                name="level"
-                id="level"
-                onChange={handleInputChange}
-                value={todo.level}
-                required
-              >
-                <option value="high">high</option>
-                <option value="medium">medium</option>
-                <option value="low">low</option>
-              </select>
-            </div>
-            <div className={styles["form-field"]}>
-              <label htmlFor="body">Body: </label>
-              <textarea
-                id="body"
-                name="body"
-                onChange={handleInputChange}
-                value={todo.body}
-                required
-              >
-                {" "}
-              </textarea>
-            </div>
-            <div className={styles["form-field"]}>
-              <button>create todo</button>
-            </div>
-          </form>
-        </div>
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <h2 className="form-title">Add New Todo</h2>
+          <div className="form-input">
+            <label htmlFor="title">Todo Title: </label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={title}
+              onChange={handleTitleChange}
+              required
+              autoFocus
+            />
+          </div>
+          <div className="form-input">
+            <label htmlFor="desc">Todo description: </label>
+            <textarea
+              name="desc"
+              id="desc"
+              value={desc}
+              onChange={handleDescriptionChange}
+              required
+            ></textarea>
+          </div>
+          <div className="form-input">
+            <button type="submit" className="btn form-btn">
+              Add Todo
+            </button>
+          </div>
+        </form>
       </div>
     );
   };
 
-  export default NewTodo;
+  export default AddTodo;
+
   ```
 
-## [24. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
+  ```css
+  /*add css in App.css*/
+  /* form related styles starts here */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  form {
+    background-color: rgb(247, 220, 187);
+    margin: 1rem 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 80%;
+  }
+  .form-title {
+    text-align: center;
+  }
+  .form-input input,
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+  }
+  textarea {
+    resize: none;
+  }
+  .form-input button {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+  }
+  .form-input button:hover {
+    background-color: orange;
+  }
+  /* form related styles starts here */
+  ```
+
+## [25. data passing: child to parent component](https://youtu.be/xdW2uFA-SOg)
 
 - Another practical example: https://youtu.be/h7yq5lfDZc8
-- Example
+- **Code Example - 29 (state lifting)**
 
   ```js
   // App.js
+  step 1: create a function that will help us to get the data from child component
+   const handleAddNewTodo = (newTodo) => {
+    console.log(newTodo);
+  };
+
+   step 2: pass the function as props to child to component
+  <AddTodo onHandleAddNewTodo={handleAddNewTodo} />
+
+  step 3: receive the function props and use it for passing the data from child to parent
+  // AddTodo.js
+  import PropTypes from "prop-types";
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newTodo = { id: getUniqueId(), title, desc };
+    setTitle("");
+    setDesc("");
+    props.onHandleAddNewTodo(newTodo);
+  };
+
+  AddTodo.propTypes = {
+    onHandleAddNewTodo: PropTypes.func,
+  };
   ```
 
-## [25. dynamic styling in React](https://youtu.be/Eru9-kZfhw4)
+## [26. update the state based on previous state]
 
-## [26. Assignment - 3: Add New Product](https://github.com/anisul-Islam/react-assignment-3-add-new-product)
+- **Code Example - 30 (update the state based on previous state)**
+
+  ```js
+  // Inside App.js
+  const handleAddNewTodo = (newTodo) => {
+    setTodos((prevState) => [...prevState, newTodo]);
+  };
+  ```
+
+## [27. delete an item based on id or anything]
+
+- **Code Example - 30 (state lifting and delete item)**
+
+  ```js
+   // App.js
+  step 1: create a function that will help us to get the id from child component Todo.js
+   const handleDeleteTodo = (id) => {
+    console.log(id);
+  };
+
+   step 2: pass the function as props to App.js -> Todos.js -> Todo.js
+  <Todos onHandleDeleteTodo={handleDeleteTodo} />
+
+  step 3: After passing the function from App.js to Todo.js now lets handle the button click and get the id so that we pass the id to App.js with the help of the function onHandleDeleteTodo
+  // Todo.js
+
+  const { todo, onHandleDeleteTodo } = props;
+
+  const handleDelete = (id) => {
+    onHandleDeleteTodo(id);
+  };
+
+  <button
+          className="btn"
+          onClick={() => {
+            handleDelete(todo.id);
+          }}
+        >
+          <FaTrash className="icon" />
+  </button>
+
+  step 4: finally with the help of the id lets delete the item from todos state inside App.js
+
+  const handleDeleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+  ```
+
+## [28. useRef hook - Uncontrolled component](https://youtu.be/l5z137GWakU)
+
+- If we look at the AddTodo component then you will see we are not using those title and desc state inside the component that much so we can avoid state and make the component stateless
+- **Code Example - 31 (useRef hook for getting form value)**
+
+  ```js
+  import React, { useRef } from "react";
+  import PropTypes from "prop-types";
+
+  import { getUniqueId } from "../utility/getUniqueId";
+
+  const AddTodo = (props) => {
+    const titleRef = useRef("");
+    const descRef = useRef("");
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const title = titleRef.current.value;
+      const desc = descRef.current.value;
+      const newTodo = { id: getUniqueId(), title, desc };
+      props.onHandleAddNewTodo(newTodo);
+      titleRef.current.value = "";
+      descRef.current.value = "";
+    };
+
+    return (
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <h2 className="form-title">Add New Todo</h2>
+          <div className="form-input">
+            <label htmlFor="title">Todo Title: </label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              ref={titleRef}
+              required
+              autoFocus
+            />
+          </div>
+          <div className="form-input">
+            <label htmlFor="desc">Todo description: </label>
+            <textarea name="desc" id="desc" ref={descRef} required></textarea>
+          </div>
+          <div className="form-input">
+            <button type="submit" className="btn form-btn">
+              Add Todo
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  };
+
+  AddTodo.propTypes = {
+    onHandleAddNewTodo: PropTypes.func,
+  };
+
+  export default AddTodo;
+  ```
+
+## [29. dynamic styling in React](https://youtu.be/Eru9-kZfhw4)
+
+- Now lets add some coditional styling
+- **Code Example - 32 (conditional styling)**
+
+  ```js
+  import React, { useState, useEffect } from "react";
+  import PropTypes from "prop-types";
+
+  import { getUniqueId } from "../utility/getUniqueId";
+
+  const AddTodo = (props) => {
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+
+    const [isTitleValid, setIsTitleValid] = useState(false);
+    const [isDescValid, setIsDescValid] = useState(false);
+
+    useEffect(() => {
+      if (title.trim().length > 3) {
+        setIsTitleValid(true);
+      }
+      if (desc.trim().length > 9) {
+        setIsDescValid(true);
+      }
+    }, [title, desc]);
+
+    const handleTitleChange = (event) => {
+      setTitle(event.target.value);
+    };
+
+    const handleDescriptionChange = (event) => {
+      setDesc(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+
+      const newTodo = { id: getUniqueId(), title, desc };
+      props.onHandleAddNewTodo(newTodo);
+      setTitle("");
+      setDesc("");
+    };
+
+    return (
+      <div className="form-container">
+        <pre style={{ backgroundColor: "white" }}>
+          {JSON.stringify({ id: getUniqueId(), title, desc }, undefined, 2)}
+        </pre>
+        <form onSubmit={handleSubmit}>
+          <h2 className="form-title">Add New Todo</h2>
+          <div className="form-input">
+            <label htmlFor="title">Todo Title: </label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={title}
+              onChange={handleTitleChange}
+              required
+              autoFocus
+            />
+            {!isTitleValid && <p>Title Should be at least 4 characters</p>}
+          </div>
+          <div className="form-input">
+            <label htmlFor="desc">Todo description: </label>
+            <textarea
+              name="desc"
+              id="desc"
+              value={desc}
+              onChange={handleDescriptionChange}
+              required
+            ></textarea>
+            {!isDescValid && (
+              <p>Description Should be at least 10 characters</p>
+            )}
+          </div>
+          <div className="form-input">
+            <button
+              type="submit"
+              className="btn form-btn"
+              disabled={!(isTitleValid && isDescValid)}
+            >
+              Add Todo
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  };
+
+  AddTodo.propTypes = {
+    onHandleAddNewTodo: PropTypes.func,
+  };
+
+  export default AddTodo;
+  ```
+
+## [30. Assignment - 3: Add New Product](https://github.com/anisul-Islam/react-assignment-3-add-new-product)
 
 ## Part-4 (useEffect Hook, custom hook)
 
-## [27. useEffect Hook](https://youtu.be/XEU3jlV9syI)
+## [29. useEffect Hook](https://youtu.be/XEU3jlV9syI)
 
 - Example 1
 
@@ -1378,7 +1831,7 @@ npm start
   export default UseEffectExample;
   ```
 
-## [28. fatch data using useEffect Hook](https://youtu.be/Z-EkslDJTJI)
+## [30. fatch data using useEffect Hook](https://youtu.be/Z-EkslDJTJI)
 
 - example
 
@@ -1432,7 +1885,7 @@ npm start
   export default UseEffectHook;
   ```
 
-## [29. how to create custom hook](https://youtu.be/ZWschU7H_20)
+## [31. how to create custom hook](https://youtu.be/ZWschU7H_20)
 
 - example
 
@@ -1471,19 +1924,11 @@ npm start
   export default useFetch;
   ```
 
-## [30. Assignment 4 - fetch products](https://github.com/anisul-Islam/react-assignment-4-fetch-products)
+## [32. Assignment 4 - fetch products](https://github.com/anisul-Islam/react-assignment-4-fetch-products)
 
-## Part-5 (useRef Hook, uncontrolled component, useReducer Hook, modal)
+## Part-5 (useReducer Hook, modal)
 
-## [31. useRef hook](https://youtu.be/l5z137GWakU)
-
-- example
-
-  ```js
-
-  ```
-
-## [32. useReducer hook](https://youtu.be/l_BhBNhNwhE)
+## [33. useReducer hook](https://youtu.be/l_BhBNhNwhE)
 
 - example
 
@@ -1491,7 +1936,7 @@ npm start
 
   ```
 
-## [33. useReducer hook Example Modal]
+## [34. useReducer hook Example Modal]
 
 - example
 
@@ -1499,13 +1944,13 @@ npm start
 
   ```
 
-## [34. react todo projects]
+## [35. react todo projects]
 
 - [react todo project](https://github.com/anisul-Islam/react-todo-project)
 
 ## Part-6 (Optimization: React.memo(), useCallback(), useMemo())
 
-## [35. react memo](https://youtu.be/pwh4oyGpVPk)
+## [36. react memo](https://youtu.be/pwh4oyGpVPk)
 
 - It helps to avoid unnecessary components rendering
 
@@ -1549,7 +1994,7 @@ npm start
     export default memo(Message);
   ```
 
-## [36. useCallback Hook](https://youtu.be/t9qUJ0SRQuE)
+## [37. useCallback Hook](https://youtu.be/t9qUJ0SRQuE)
 
 - It helps to avoid unnecessary components rendering for defining callback methods
 - only component will be rendered when some states or props change
@@ -1602,7 +2047,7 @@ npm start
 
   ```
 
-## [37. useMemo Hook](https://youtu.be/_namSWWPMeU)
+## [38. useMemo Hook](https://youtu.be/_namSWWPMeU)
 
 - It helps to avoid taking unnecessary time for same kind of complex calculation for each rendering
 
@@ -1661,46 +2106,46 @@ npm start
 
 - [react-routing-project](https://github.com/anisul-Islam/react-routing-project)
 
-## [38. Introduction to Routing](https://youtu.be/1_powatXjds)
+## [39. Introduction to Routing](https://youtu.be/1_powatXjds)
 
-## [39. Navigation and redirect](https://youtu.be/DooqgS1JDg0)
+## [40. Navigation and redirect](https://youtu.be/DooqgS1JDg0)
 
-## [40. dynamic routing using useParams](https://youtu.be/g5B0Vq3jHbA)
+## [41. dynamic routing using useParams](https://youtu.be/g5B0Vq3jHbA)
 
-## [41. useLocation hook](https://youtu.be/EKmr00ZKkCg)
+## [42. useLocation hook](https://youtu.be/EKmr00ZKkCg)
 
-## [42. route parameter, query parameter](https://youtu.be/uQtNSOUepVE)
+## [43. route parameter, query parameter](https://youtu.be/uQtNSOUepVE)
 
-## [43. https://youtu.be/MqFZ-tewuW0](https://youtu.be/MqFZ-tewuW0)
+## [44. https://youtu.be/MqFZ-tewuW0](https://youtu.be/MqFZ-tewuW0)
 
 ## Part-8 (CRUD Operations - http methods)
 
-## [44. Read Users](https://youtu.be/gnHdHFqlfew)
+## [45. Read Users](https://youtu.be/gnHdHFqlfew)
 
-## [45. Delete User](https://youtu.be/IX-1n_eHF0s)
+## [46. Delete User](https://youtu.be/IX-1n_eHF0s)
 
-## [46. Create User](https://youtu.be/JOAiEGOqAmo)
+## [47. Create User](https://youtu.be/JOAiEGOqAmo)
 
-## [47. Update User](https://youtu.be/msrcslJPsjY)
+## [48. Update User](https://youtu.be/msrcslJPsjY)
 
 ## Part-9 (props drilling, useContext Hook)
 
-## [48. Props drilling](https://youtu.be/_JNIQXYSUu4)
+## [49. Props drilling](https://youtu.be/_JNIQXYSUu4)
 
-## [49. useContext Hook](https://youtu.be/RYeRn5_xL7k)
+## [50. useContext Hook](https://youtu.be/RYeRn5_xL7k)
 
-## [50. Theme change project using useContext]
+## [51. Theme change project using useContext]
 
 ## Part-10 (redux, redex toolkit)
 
 - check redux videos and then redux-toolkit
 - how to use redux devtools
 
-## [51. Counter App using Redux-toolkit](https://youtu.be/1aOGY0rRBQk)
+## [52. Counter App using Redux-toolkit](https://youtu.be/1aOGY0rRBQk)
 
-## [52. Fetch data using Redux-toolkit](https://youtu.be/LoK2bQUPjsY)
+## [53. Fetch data using Redux-toolkit](https://youtu.be/LoK2bQUPjsY)
 
-## [53. Books CRUD APP using Redux-toolkit](https://youtu.be/No1FYwxK6Es)
+## [54. Books CRUD APP using Redux-toolkit](https://youtu.be/No1FYwxK6Es)
 
 - [Project's GitHub link](https://github.com/anisul-Islam/redux-toolkit-crud-app)
 
