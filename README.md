@@ -15,6 +15,7 @@
 ### 1.2 Why React?
 
 - It helps us to create reusable components (small and isloated pieces of code using html, css, js)
+- think about html tag and creating your own tag with react
 - Load fast
 - Allows us to use external plugin
 - Major brands like facebook, instragram, youtube, airbnb use react.js
@@ -140,6 +141,7 @@ npm start
 ### 3.3 understand File structure
 
 - discuss about package.json, node_modules, public, src
+- packahe-lock.json is for version control for packages. it keeps the record of node_modules tree so that when you clone and use npm i it will install exactly same versions for the packages even though their is a new versions. if you do not have package-lock.json then it will install from package.json
 - keep only the index.js in src and then play with React.js
 - change the title of the app inside index.html file
 
