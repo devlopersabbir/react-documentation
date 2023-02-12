@@ -210,6 +210,36 @@ npm start
   ```
 
 ## [5. How React works under the hood](https://youtu.be/kj0cxv_dC9M)
+  
+  ```javascript
+      const Message = () => {
+        // return <h3>Message </h3>;
+        return React.createElement("h1", {}, "welcome");
+      };
+
+      const Todo = () => {
+        return (
+          // <article>
+          //   <h2>Check students attendance</h2>
+          //   <p>
+          //     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, molestiae.
+          //   </p>
+          // </article>
+
+          React.createElement(
+            "article",
+            {},
+            React.createElement("h2", {}, "Check students attendance"),
+            React.createElement(
+              "p",
+              {},
+              " Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, molestiae."
+            )
+          )
+        );
+      };
+  
+  ```
 
 ## [6. Component](https://youtu.be/qgLZSNppJOU)
 
