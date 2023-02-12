@@ -141,7 +141,7 @@ npm start
 ### 3.3 understand File structure
 
 - discuss about package.json, node_modules, public, src
-- packahe-lock.json is for version control for packages. it keeps the record of node_modules tree so that when you clone and use npm i it will install exactly same versions for the packages even though their is a new versions. if you do not have package-lock.json then it will install from package.json
+- [package-lock.json](https://medium.com/helpshift-engineering/package-lock-json-the-complete-guide-2ae40175ebdd#:~:text=different%20machines%2Fenvironments.-,package%2Dlock.,json%20file.) is for version control for packages. it keeps the record of node_modules tree so that when you clone and use npm i it will install exactly same versions for the packages even though their is a new versions. if you do not have package-lock.json then it will install from package.json
 - keep only the index.js in src and then play with React.js
 - change the title of the app inside index.html file
 
