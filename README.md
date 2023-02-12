@@ -271,6 +271,7 @@ npm start
         <article>
           <h3>{title1}</h3>
           <p>{desc1} </p>
+          <p>Created at {new Date().toLocaleDateString()}</p>
         </article>
       </div>
     );
